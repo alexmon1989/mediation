@@ -132,7 +132,7 @@
                         </a>
                     </li>
 
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown {% if 'resources/' in request.path %}active{% endif %}">
 
                         <a href="{% url 'resources:index' %}" id="mainNavBlog" class="nav-link dropdown-toggle"
                            data-bs-toggle="dropdown"
