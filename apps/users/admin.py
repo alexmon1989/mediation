@@ -37,7 +37,7 @@ class CustomUserAdmin(UserAdmin):
     )
 
     def get_fieldsets(self, request, obj=None):
-        if not request.user.is_superuser:
+        if not request.user.is_superuser and obj is not None:
             return (
                 (None, {'fields': ('email', 'password')}),
                 (_('Personal info'), {'fields': (
@@ -51,7 +51,7 @@ class CustomUserAdmin(UserAdmin):
                 (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
             )
         else:
-            return self.fieldsets
+            return super().get_fieldsets(request, obj)
 
 
 admin.site.register(User, CustomUserAdmin)
