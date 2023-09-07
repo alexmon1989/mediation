@@ -19,7 +19,7 @@ class CustomUserAdmin(UserAdmin):
             'middle_name',
         )}),
         (_('Permissions'), {
-            'fields': ('is_active', 'is_staff', 'is_superuser', 'user_permissions'),
+            'fields': ('groups', 'is_active', 'is_staff', 'is_superuser', 'user_permissions'),
         }),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
     )
@@ -37,19 +37,27 @@ class CustomUserAdmin(UserAdmin):
     )
 
     def get_fieldsets(self, request, obj=None):
-        if not request.user.is_superuser and obj is not None:
-            return (
-                (None, {'fields': ('email', 'password')}),
-                (_('Personal info'), {'fields': (
-                    'last_name',
-                    'first_name',
-                    'middle_name',
-                )}),
-                (_('Permissions'), {
-                    'fields': ('is_active', 'is_staff', 'user_permissions'),
-                }),
-                (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
-            )
+        if not request.user.is_superuser:
+            if obj is not None:
+                return (
+                    (None, {'fields': ('email', 'password')}),
+                    (_('Personal info'), {'fields': (
+                        'last_name',
+                        'first_name',
+                        'middle_name',
+                    )}),
+                    (_('Permissions'), {
+                        'fields': ('groups', 'is_active', 'is_staff', 'user_permissions'),
+                    }),
+                    (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
+                )
+            else:
+                return (
+                    (None, {
+                        'classes': ('wide',),
+                        'fields': ('email', 'password1', 'password2', 'is_staff', 'is_active')}
+                     ),
+                )
         else:
             return super().get_fieldsets(request, obj)
 
