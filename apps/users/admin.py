@@ -47,7 +47,7 @@ class CustomUserAdmin(UserAdmin):
                         'middle_name',
                     )}),
                     (_('Permissions'), {
-                        'fields': ('groups', 'is_active', 'is_staff', 'user_permissions'),
+                        'fields': ('groups', 'is_active', 'is_staff'),
                     }),
                     (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
                 )
