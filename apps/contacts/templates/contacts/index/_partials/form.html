@@ -1,0 +1,119 @@
+<!--
+    CONTACT FORM : AJAX [TESTED|WORKING AS IT IS]
+
+        Plugin required: SOW Ajax Forms
+
+        In order to work as ajax form, SOW Ajax Forms should be available/enabled
+        Else, SOW Form Validation plugin is used.
+        If none of them are available, normal submit is used and you can remove:
+            .js-ajax
+            .bs-validate
+            novalidate
+            any data-ajax-*
+            any data-error-*
+
+        ** Remove data-error-toast-* for no error toast notifications
+
+
+
+
+    Ajax will control success/fail alerts according to server response:
+
+        1. unexpected error: 		if server response is this string: {:err:unexpected:}
+        2. mising mandatory:		if server response is this string: {:err:required:}
+        3. success:					if server response is this string: {:success:}
+
+        data-ajax-control-alerts="true"
+        data-ajax-control-alert-succes="#contactSuccess"
+        data-ajax-control-alert-unexpected="#contactErrorUnexpected"
+        data-ajax-control-alert-mandaroty="#contactErrorMandatory"
+
+    +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        WORKING CONTACT! Edit your php/config.inc.php
+    +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+<form novalidate
+      action="{% url 'contacts:send_email' %}"
+      method="POST"
+
+      data-ajax-container="#ajax_dd_contact_response_container"
+      data-ajax-update-url="false"
+      data-ajax-show-loading-icon="true"
+      data-ajax-callback-function=""
+      data-error-scroll-up="false"
+
+      data-ajax-control-alerts="true"
+      data-ajax-control-alert-succes="#contactSuccess"
+      data-ajax-control-alert-unexpected="#contactErrorUnexpected"
+      data-ajax-control-alert-mandaroty="#contactErrorMandatory"
+
+      data-error-toast-text="<i class='fi fi-circle-spin fi-spin float-start'></i> Будь ласка, заповніть усі обов'язкові поля!"
+      data-error-toast-delay="2000"
+      data-error-toast-position="bottom-center"
+
+      class="bs-validate js-ajax">
+
+    {% csrf_token %}
+
+    <!-- 2.
+        A very small optional trick (using .hide class instead of type="hidden") for some low spam robots.
+        If this is not empty, the process should stop. A normal user/visitor should not be able to see this field.
+
+        PHP Basic Example
+        if($_POST['norobot'] != '') {
+            exit;
+        }
+    -->
+    <input type="text" name="norobot" value="" class="hide" tabindex="-1">
+    <!-- -->
+
+    <div class="form-floating mb-3">
+        <input required placeholder="Ім'я" id="contact_name" name="contact_name" type="text" class="form-control">
+        <label for="contact_name">Ім'я*</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input required placeholder="Email" id="contact_email" name="contact_email" type="email" class="form-control">
+        <label for="contact_email">Email*</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input placeholder="Тема" id="contact_subject" name="contact_subject" type="text" class="form-control">
+        <label for="contact_subject">Тема*</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <textarea required placeholder="Повідомлення" id="contact_message" name="contact_message" class="form-control"
+                  rows="3" style="min-height:120px"></textarea>
+        <label for="contact_message">Повідомлення*</label>
+    </div>
+
+    <!--
+        Server detailed error
+        !ONLY! If debug is enabled!
+        Else, shown ony "Server Error!"
+    -->
+    <div id="ajax_dd_contact_response_container"></div>
+
+    <!-- {:err:unexpected:} internal server error -->
+    <div id="contactErrorUnexpected" class="hide alert alert-danger p-3">
+        Неочікувана помилка!
+    </div>
+
+    <!-- {:err:required:} mandatory fields -->
+    <div id="contactErrorMandatory" class="hide alert alert-danger p-3">
+        Будь ласка, заповніть усі обов'язкові поля!
+    </div>
+
+    <!-- {:success:} message sent -->
+    <div id="contactSuccess" class="hide alert alert-success p-3">
+        Дякуємо за повідомлення! Очікуйте на відповідь найближчим часом.
+    </div>
+
+
+    <button type="submit" class="btn btn-primary w-100">
+        Відправити повідомлення
+    </button>
+
+</form>
+<!-- /CONTACT FORM : AJAX -->

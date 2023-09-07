@@ -1,0 +1,67 @@
+<div class="section py-5">
+    <div class="container">
+        <div class="row g-xl-5">
+            <div class="col-12 col-lg-8 mb-4">
+                {% include 'contacts/index/_partials/form.html' %}
+            </div>
+
+            <div class="col-12 col-lg-4 mb-4">
+                <div class="d-flex">
+                    <div class="float-none me-3">
+                        <i class="fi fi-shape-abstract-dots text-gray-500 float-start fs-2"></i>
+                    </div>
+
+                    <div>
+                        <h2 class="fs-5">Центр медіації та посередництва IP-офісу</h2>
+                        <div class="m-0 fs-6 text-muted">{{ contacts_data.address|linebreaks }}</div>
+                    </div>
+                </div>
+
+                <div class="d-flex mt-4">
+                    <div class="float-none me-3">
+                        <i class="fi fi-time text-gray-500 float-start fs-2"></i>
+                    </div>
+
+                    <div>
+                        <h3 class="h5">Режим роботи</h3>
+                        <div class="m-0 fs-6 text-muted">{{ contacts_data.work_hours|linebreaks }}</div>
+                    </div>
+                </div>
+
+                <div class="d-flex mt-4">
+                    <div class="float-none me-3">
+                        <i class="fi fi-phone text-gray-500 float-start fs-2"></i>
+                    </div>
+
+                    <div>
+                        <h3 class="h5">Телефони</h3>
+                        <ul class="list-unstyled m-0">
+                            {% for item in contacts_data.phone_set.all %}
+                                <li class="list-item mb-2 text-gray-500">
+                                    <a class="link-muted" href="tel:{{ item.value }}">{{ item.value }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="d-flex mt-4">
+                    <div class="float-none me-3">
+                        <i class="fi fi-envelope text-gray-500 float-start fs-2"></i>
+                    </div>
+
+                    <div>
+                        <h3 class="h5">E-Mail</h3>
+                        <ul class="list-unstyled m-0">
+                            {% for item in contacts_data.email_set.all %}
+                                <li class="list-item mb-2">
+                                    <a class="text-muted" href="mailto:{{ item.email }}">{{ item.email }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

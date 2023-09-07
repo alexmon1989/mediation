@@ -1,0 +1,233 @@
+from django.db import models
+from django.core.validators import FileExtensionValidator
+from django.utils.functional import cached_property
+from django.urls import reverse
+
+from apps.common.models import TimeStampModel
+from apps.classifiers.models import (EducationalInstitution, EducationalCourse, Speciality, Language, WorkFormat,
+                                     Region, Specialization, ProfessionalDirections)
+from .dataclasses import MediatorTraining as MediatorTrainingDataClass
+
+from typing import List
+
+
+# Дозволені розширення файлів сертифікату про навчання
+CERTIFICATES_EXT_ALLOWED = (
+    'pdf',
+    'jpg',
+    'jpeg',
+    'png',
+    'gif'
+)
+
+CHANGE_REASON_CHOICES = (
+    ('', '----'),
+    ("tech", "Технічні виправлення"),
+    ("biblio", "Зміни в бібліографії"),
+)
+
+
+class Mediator(TimeStampModel):
+    """Модель медіатора."""
+    application_number = models.CharField("Номер заяви", max_length=255)
+    application_date = models.DateField("Дата заяви")
+    last_name = models.CharField("Прізвище", max_length=255)
+    first_name = models.CharField("Ім'я", max_length=255)
+    middle_name = models.CharField("По-батькові", max_length=255, blank=True, null=True)
+    photo = models.ImageField(
+        'Фото',
+        upload_to='mediators/%Y/%m/%d',
+        null=True,
+        blank=True,
+        help_text='Розмір зображення - 600*900 пікселей. Якщо зображення має інший розмір, то воно буде приведено до розміру 600*900 автоматично.'
+    )
+    educations = models.ManyToManyField(EducationalInstitution, through='MediatorEducation', blank=True)
+    languages = models.ManyToManyField(Language, blank=True, verbose_name='Мова')
+    specialities = models.ManyToManyField(Speciality, blank=True, verbose_name='Спеціальність')
+    work_format = models.ForeignKey(WorkFormat, on_delete=models.CASCADE, null=True, blank=True,
+                                    verbose_name='Формат роботи')
+    regions = models.ManyToManyField(Region, blank=True, verbose_name='Регіон роботи')
+    trainings = models.ManyToManyField(EducationalCourse, through='MediatorTraining', blank=True,
+                                       related_name='basic_training')
+    specializations = models.ManyToManyField(Specialization, blank=True, verbose_name='Спеціалізація')
+    professional_directions = models.ManyToManyField(ProfessionalDirections, blank=True,
+                                                     verbose_name='Професійні напрямки')
+
+    # Контактна інформація
+    address = models.TextField('Адреса для листування', max_length=512, null=True, blank=True)
+    email = models.EmailField('Електронна адреса', null=True, blank=True)
+    phones = models.CharField('Номери телефонів', max_length=255, null=True, blank=True)
+
+    # Додаткова інформація
+    job = models.CharField('Місце роботи', max_length=255, null=True, blank=True)
+    job_experience = models.TextField('Досвід роботи', max_length=2048, null=True, blank=True)
+    mediators_membership = models.TextField('Членство, займані посади в об’єднаннях медіаторів', max_length=2048,
+                                            null=True, blank=True)
+    awards = models.TextField('Нагороди, почесні звання', max_length=1024, null=True, blank=True)
+    price = models.TextField('Вартість послуг медіації', max_length=1024, null=True, blank=True)
+    other = models.TextField('Інше', max_length=1024, null=True, blank=True)
+
+    active = models.BooleanField('Активний', default=False, help_text='Визначає чи буде особу опубліковано на сайті')
+    updated_at = models.DateTimeField(auto_now_add=True, verbose_name='Оновлено')
+    last_change_reason = models.CharField('Причина змін', null=True, blank=True, choices=CHANGE_REASON_CHOICES,
+                                           max_length=6)
+
+    def __str__(self):
+        res = f"{self.last_name} {self.first_name}"
+        if self.middle_name:
+            res = f"{res} {self.middle_name}"
+        return res
+
+    def get_absolute_url(self):
+        return reverse('registry:detail', args=[self.pk])
+
+    @property
+    def specializations_titles(self) -> List[str]:
+        """Повертає список зі спеціалізаціями медіатора."""
+        return self.specializations.values_list('title', flat=True)
+
+    @property
+    def specialities_titles(self) -> List[str]:
+        """Повертає список зі спеціальностями медіатора."""
+        return self.specialities.values_list('title', flat=True)
+
+    @property
+    def professional_directions_titles(self) -> List[str]:
+        """Повертає список із професійними напрямкками медіатора."""
+        return self.professional_directions.values_list('title', flat=True)
+
+    @property
+    def regions_titles(self) -> List[str]:
+        """Повертає список із регіонами роботи медіатора."""
+        return self.regions.values_list('title', flat=True)
+
+    @property
+    def languages_titles(self) -> List[str]:
+        """Повертає список із регіонами роботи медіатора."""
+        return self.languages.values_list('title', flat=True)
+
+    @property
+    def educations_titles(self) -> List[str]:
+        """Повертає список із освітами медіатора."""
+        res = []
+        educations = self.mediatoreducation_set.order_by('year_from').select_related('education_institution')
+        for item in educations:
+            res.append(f"{item.education_institution.title} ({item.year_from}-{item.year_to})")
+        return res
+
+    @cached_property
+    def trainings_detailed(self) -> List[MediatorTrainingDataClass]:
+        res = []
+        for item in self.mediatortraining_set.select_related(
+                'education_institution', 'education_course'
+        ).order_by('year'):
+            res.append(
+                MediatorTrainingDataClass(
+                    type_code=item.training_type,
+                    institution_title=item.education_institution.title,
+                    education_course_title=item.education_course.title,
+                    hours=item.hours,
+                    year=item.year,
+                    certificate_url=item.certificate.url
+                )
+            )
+        return res
+
+    @cached_property
+    def basic_trainings(self) -> List[MediatorTrainingDataClass]:
+        return list(filter(lambda x: x.type_code == 'BASIC', self.trainings_detailed))
+
+    @cached_property
+    def spec_trainings(self) -> List[MediatorTrainingDataClass]:
+        return list(filter(lambda x: x.type_code == 'SPEC', self.trainings_detailed))
+
+    @cached_property
+    def additional_trainings(self) -> List[MediatorTrainingDataClass]:
+        return list(filter(lambda x: x.type_code == 'ADDITIONAL', self.trainings_detailed))
+
+    @property
+    def has_additional_info(self) -> bool:
+        return any([
+            self.job,
+            self.job_experience,
+            self.mediators_membership,
+            self.awards,
+            self.price,
+            self.other,
+        ])
+
+    @property
+    def has_contact_info(self) -> bool:
+        return any([
+            self.address,
+            self.email,
+            self.phones,
+        ])
+
+    class Meta:
+        verbose_name = 'Медіатор'
+        verbose_name_plural = 'Медіатори'
+        db_table = 'mediators'
+
+
+class MediatorEducation(TimeStampModel):
+    """Модель освіти медіатора."""
+    mediator = models.ForeignKey(Mediator, on_delete=models.CASCADE)
+    education_institution = models.ForeignKey(EducationalInstitution, on_delete=models.CASCADE,
+                                              verbose_name='Освітній заклад')
+    year_from = models.PositiveIntegerField('Рік з', null=True, blank=True)
+    year_to = models.PositiveIntegerField('Рік по', null=True, blank=True)
+    certificate = models.FileField(
+        'Файл сертифікату',
+        upload_to='certificates/%Y/%m/%d/',
+        validators=[FileExtensionValidator(allowed_extensions=CERTIFICATES_EXT_ALLOWED)],
+        help_text=f"Дозволені розширення файлу: {', '.join(CERTIFICATES_EXT_ALLOWED)}",
+        null=True,
+        blank=True,
+    )
+
+    class Meta:
+        verbose_name = 'Освіта'
+        verbose_name_plural = 'Освіта'
+        db_table = 'mediators_educations'
+
+    def __str__(self):
+        return f"{self.education_institution.title} ({self.year_from} - {self.year_to})"
+
+
+class MediatorTraining(TimeStampModel):
+    """Модель базової підготовки медіатора."""
+
+    class TrainingType(models.TextChoices):
+        BASIC = 'BASIC', 'Базова підготовка'
+        SPEC = 'SPEC', 'Спеціалізована підготовка'
+        ADDITIONAL = 'ADDITIONAL', 'Підвищення професійного рівня'
+
+    training_type = models.CharField(
+        max_length=10,
+        choices=TrainingType.choices,
+        verbose_name='Тип підготовки'
+    )
+    mediator = models.ForeignKey(Mediator, on_delete=models.CASCADE)
+    education_institution = models.ForeignKey(EducationalInstitution, on_delete=models.CASCADE,
+                                              verbose_name='Освітній заклад')
+    education_course = models.ForeignKey(EducationalCourse, on_delete=models.CASCADE,
+                                              verbose_name='Назва курсу')
+    hours = models.PositiveIntegerField('Кількість годин', null=True, blank=True)
+    year = models.PositiveIntegerField('Рік', null=True, blank=True)
+    certificate = models.FileField(
+        'Файл сертифікату',
+        upload_to='certificates/%Y/%m/%d/',
+        validators=[FileExtensionValidator(allowed_extensions=CERTIFICATES_EXT_ALLOWED)],
+        help_text=f"Дозволені розширення файлу: {', '.join(CERTIFICATES_EXT_ALLOWED)}",
+        null=True,
+        blank=True,
+    )
+
+    class Meta:
+        verbose_name = 'Підготовка медіатора'
+        verbose_name_plural = 'Підготовка медіатора'
+        db_table = 'mediators_trainings'
+
+    def __str__(self):
+        return f"{self.education_institution.title} - {self.education_course.title} ({self.year})"

@@ -1,0 +1,105 @@
+{% load static %}
+{% load contacts_extras %}
+
+<!-- Footer -->
+<footer id="footer" class="bg-gray-900 text-white">
+
+    <!-- line divider -->
+    <hr class="bg-gray-500 my-0 container">
+
+    <div class="container pt-5 pb-2">
+
+        <div class="row g-4">
+
+            <div class="col-12 col-lg-4 mb-4">
+
+                <p class="fw-bold">Реєстр ІР-медіаторів</p>
+
+                <div class="my-4"><!-- copyright -->
+                    <p class="small mb-0">&copy; {% now "Y" %} Український національний офіс інтелектуальної власності.</p>
+                </div>
+
+                <!-- social icons -->
+                <a href="https://www.facebook.com/UANIPIO"
+                   class="btn btn-sm text-white transition-hover-top mb-2 rounded-circle bg-gray-700"
+                   rel="noopener" aria-label="facebook page">
+                    <i class="fi fi-social-facebook"></i>
+                </a>
+
+                <a href="https://twitter.com/ua_ip_office"
+                   class="btn btn-sm text-white transition-hover-top mb-2 rounded-circle bg-gray-700"
+                   rel="noopener" aria-label="twitter page">
+                    <i class="fi fi-social-twitter"></i>
+                </a>
+
+            </div>
+
+            <div class="col-12 col-lg-4 mb-4">
+
+                <h3 class="small mb-4">ЗВ'ЯЗОК З НАМИ</h3>
+                {% contacts_data as contacts_data %}
+
+                <div class="small d-flex align-items-start my-3">
+                    <svg class="me-3 flex-none my-1" height="24px" xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <div class="p-0 m-0 w-100">
+                        {{ contacts_data.address|linebreaksbr }}
+                    </div>
+                </div>
+
+                <div class="small d-flex align-items-start my-3">
+                    <svg class="me-3 flex-none my-1" height="24px" xmlns="http://www.w3.org/2000/svg" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
+                    </svg>
+                    <ul class="list-unstyled p-0 m-0 w-100">
+                        <li>
+                            Телефон:
+                            {% for item in contacts_data.phone_set.all %}
+                                <a href="tel:{{ item.value }}" class="text-white text-dashed">{{ item.value }}</a>{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </li>
+                        <li>
+                            Email:
+                            {% for item in contacts_data.email_set.all %}
+                                <a href="mailto:{{ item.email }}" class="text-white text-dashed">{{ item.email }}</a>{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+
+            <div class="col-12 col-lg-4 mb-4">
+
+                <h3 class="small mb-4">МЕНЮ</h3>
+
+                <ul class="list-unstyled">
+                    <li class="list-item mb-2">
+                        <i class="fi fi-arrow-end me-2 smaller"></i>
+                        <a class="text-gray-400" href="{% url 'index' %}">Реєстр ІР-медіаторів</a>
+                    </li>
+                    <li class="list-item mb-2">
+                        <i class="fi fi-arrow-end me-2 smaller"></i>
+                        <a class="text-gray-400" href="{% url 'resources:index' %}">Ресурси</a>
+                    </li>
+                    <li class="list-item mb-2">
+                        <i class="fi fi-arrow-end me-2 smaller"></i>
+                        <a class="text-gray-400" href="{% url 'contacts:index' %}">Зворотній зв'язок</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+<!-- /Footer -->

@@ -1,0 +1,15 @@
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+    color: #574fec;
+}
+
+.btn-light {
+    border-color: #eeeeee;
+}
+
+.trainings > div:not(:first-child) {
+    border-top-width: 0 !important;
+}
+
+.additional-info p {
+    margin-bottom: 0;
+}

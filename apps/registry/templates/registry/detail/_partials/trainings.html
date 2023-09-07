@@ -1,0 +1,33 @@
+<h4 class="text-center mt-4">Підготовка медіатора</h4>
+
+<hr>
+
+{% if object.basic_trainings %}
+    <h5 class="text-center mt-4 mb-3 text-gray-800">Базова підготовка</h5>
+
+    <div class="trainings">
+        {% for item in object.basic_trainings %}
+            {% include 'registry/detail/_partials/training.html' with item=item %}
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% if object.spec_trainings %}
+    <h5 class="text-center mt-4 mb-3 text-gray-800">Спеціалізована підготовка</h5>
+
+    <div class="trainings">
+        {% for item in object.spec_trainings %}
+            {% include 'registry/detail/_partials/training.html' with item=item %}
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% if object.additional_trainings %}
+    <h5 class="text-center mt-4 mb-3 text-gray-800">Підвищення професійного рівня</h5>
+
+    <div class="trainings">
+        {% for item in object.additional_trainings %}
+            {% include 'registry/detail/_partials/training.html' with item=item %}
+        {% endfor %}
+    </div>
+{% endif %}

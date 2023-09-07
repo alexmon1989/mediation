@@ -1,0 +1,21 @@
+{% load static %}
+
+<div class="section jarallax vh-25 text-center-xs overlay-dark overlay-opacity-2 text-white d-flex align-items-center justify-content-center">
+
+    <!-- jarallax image -->
+    <img class="jarallax-img" src="{% static 'images/IP_Office_background.jpg' %}" alt="">
+
+    <div class="container">
+        <h1 class="fw-bold">
+            {{ object.last_name }} {{ object.first_name }} {{ object.middle_name }}
+        </h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb small">
+                <li class="breadcrumb-item">
+                    <a class="text-white" href="{% url 'registry:index' %}">Реєстр медіаторів</a>
+                </li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Профіль особи</li>
+            </ol>
+        </nav>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+{% load thumbnail %}
+
+<div class="section bg-theme-color-light py-5">
+    <div class="container">
+        <div class="row">
+            {% if request.GET %}
+                <div class="col-12 mb-2">
+                    <p>Знайдено медіаторів: <strong>{{ object_list.count }}</strong></p>
+                </div>
+            {% endif %}
+
+            {% if object_list %}
+                {% for mediator in object_list %}
+                    <div class="col-6 col-lg-3 mb-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="0">
+                        <a href="{% url 'registry:detail' pk=mediator.pk %}"
+                           class="d-block bg-white rounded p-2 shadow-primary-xs text-dark text-decoration-none transition-hover-top transition-all-ease-250">
+                            {% if mediator.photo %}
+                                {% thumbnail mediator.photo "600x900" crop="center" as im %}
+                                    <img class="img-fluid rounded"
+                                         src="{{ im.url }}"
+                                         width="{{ im.width }}"
+                                         height="{{ im.height }}"
+                                         alt="{{ object.last_name }} {{ object.first_name }} {{ object.middle_name }}"/>
+                                {% endthumbnail %}
+                            {% else %}
+                                <img class="img-fluid rounded"
+                                     src="https://placehold.co/600x900?text=No+Image"
+                                     alt="{{ mediator.last_name }} {{ mediator.first_name }}">
+                            {% endif %}
+                            <div class="px-2 py-3">
+                                <h5 class="mb-0 text-center">{{ mediator.last_name }} {{ mediator.first_name }}</h5>
+                                {% if request.user.is_staff %}
+                                    {% if mediator.active %}
+                                        <div class="text-green-700 fw-bold text-center mt-2 small">Профіль активний</div>
+                                    {% else %}
+                                        <div class="text-red-700 fw-bold text-center mt-2 small">Профіль неактивний</div>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>На даний момент реєстр медіаторів порожній</p>
+            {% endif %}
+        </div>
+
+        {% include 'registry/list/_partials/pagination.html' %}
+    </div>
+</div>

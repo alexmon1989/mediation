@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block page_title %}{{ object.title }}{% endblock %}
+
+{% block body %}
+    {% include 'resources/detail/_partials/title.html' %}
+
+    <div class="container py-6 min-vh-50">
+        <div class="col-12">
+            {{ resource.content|safe }}
+        </div>
+    </div>
+{% endblock %}

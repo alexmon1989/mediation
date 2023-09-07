@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block page_title %}{{ object.last_name }} {{ object.first_name }} {{ object.middle_name }}{% endblock %}
+
+{% block body %}
+    {% include 'registry/detail/_partials/title.html' %}
+    {% include 'registry/detail/_partials/details.html' %}
+{% endblock %}
+
+{% block extra_scripts %}
+    {% if request.user.is_staff %}
+        {{ mediator.pk|json_script:"mediator-pk" }}
+        <script src="{% static 'js/profile_statistics.js' %}"></script>
+    {% endif %}
+{% endblock %}

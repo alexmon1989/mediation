@@ -1,0 +1,31 @@
+<div class="section py-5">
+    <div class="container">
+        <div class="row g-xl-5">
+            <div class="col-md-4">
+                {% include 'registry/detail/_partials/leftside.html' %}
+            </div>
+
+            <div class="col-md-8">
+                {% if request.user.is_staff %}
+                    {% include 'registry/detail/_partials/navbar.html' %}
+
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="bibliography" role="tabpanel" aria-labelledby="bibliography-tab">
+                            {% include 'registry/detail/_partials/contact_info.html' %}
+                            {% include 'registry/detail/_partials/common_info.html' %}
+                            {% include 'registry/detail/_partials/trainings.html' %}
+                            {% include 'registry/detail/_partials/additional_info.html' %}
+                        </div>
+                        <div class="tab-pane fade" id="statistics" role="tabpanel" aria-labelledby="statistics-tab">
+                            {% include 'registry/detail/_partials/statistics.html' %}
+                        </div>
+                    </div>
+                {% else %}
+                    {% include 'registry/detail/_partials/common_info.html' %}
+                    {% include 'registry/detail/_partials/trainings.html' %}
+                    {% include 'registry/detail/_partials/additional_info.html' %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

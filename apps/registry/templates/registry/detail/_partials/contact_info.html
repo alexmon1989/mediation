@@ -1,0 +1,22 @@
+{% if object.has_contact_info %}
+    <h4 class="text-center">Контактна інформація</h4>
+
+    <hr>
+
+    <dl class="row additional-info mb-4">
+        {% if object.address %}
+            <dt class="col-sm-4">Адреса для листування:</dt>
+            <dd class="col-sm-8">{{ object.address|linebreaks }}</dd>
+        {% endif %}
+
+        {% if object.email %}
+            <dt class="col-sm-4">Електронна адреса:</dt>
+            <dd class="col-sm-8"><a href="mailto:{{ object.email }}">{{ object.email }}</a></dd>
+        {% endif %}
+
+        {% if object.phones %}
+            <dt class="col-sm-4">Номери телефонів:</dt>
+            <dd class="col-sm-8">{{ object.phones }}</dd>
+        {% endif %}
+    </dl>
+{% endif %}

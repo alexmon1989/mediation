@@ -1,0 +1,43 @@
+<h4 class="text-center">Загальна інформація</h4>
+
+<hr>
+
+<dl class="row">
+    {% if request.user.is_staff and object.specializations.count > 0 %}
+        <dt class="col-sm-4">Спеціалізація</dt>
+        <dd class="col-sm-8">
+            {{ object.specializations_titles|join:'; ' }}
+        </dd>
+    {% endif %}
+
+    {% if object.specialities.count > 0 %}
+        <dt class="col-sm-4">Спеціальність</dt>
+        <dd class="col-sm-8">
+            {{ object.specialities_titles|join:'; ' }}
+        </dd>
+    {% endif %}
+
+    {% if object.educations.count > 0 %}
+        <dt class="col-sm-4">Освіта</dt>
+        <dd class="col-sm-8">
+            {{ object.educations_titles|join:';<br>' }}
+        </dd>
+    {% endif %}
+
+    {% if object.professional_directions.count > 0 %}
+        <dt class="col-sm-4">Професійні напрямки</dt>
+        <dd class="col-sm-8">{{ object.professional_directions_titles|join:';<br>' }}</dd>
+    {% endif %}
+
+    {% if object.work_format or object.regions.count > 0 %}
+        <dt class="col-sm-4">Формат роботи, регіон</dt>
+        <dd class="col-sm-8">
+            {% if object.work_format %}{{ object.work_format.title }}, {% endif %}{{ object.regions_titles|join:';<br>' }}
+        </dd>
+    {% endif %}
+
+    {% if object.languages.count > 0 %}
+        <dt class="col-sm-4">Мова(и) проведення медіації</dt>
+        <dd class="col-sm-8">{{ object.languages_titles|join:'; ' }}</dd>
+    {% endif %}
+</dl>
