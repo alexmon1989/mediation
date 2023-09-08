@@ -4,6 +4,14 @@
 
 {% block body %}
     {% include 'registry/list/_partials/title.html' %}
+
+    {% if page.show %}
+        {% include 'registry/list/_partials/page.html' %}
+    {% endif %}
+
     {% include 'registry/list/_partials/form.html' %}
-    {% include 'registry/list/_partials/mediators.html' %}
+
+    {% if total_mediators_count > 0 or request.GET %}
+        {% include 'registry/list/_partials/mediators.html' %}
+    {% endif %}
 {% endblock %}

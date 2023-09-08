@@ -3,6 +3,8 @@ from django.core.validators import FileExtensionValidator
 from django.utils.functional import cached_property
 from django.urls import reverse
 
+from ckeditor_uploader.fields import RichTextUploadingField
+
 from apps.common.models import TimeStampModel
 from apps.classifiers.models import (EducationalInstitution, EducationalCourse, Speciality, Language, WorkFormat,
                                      Region, Specialization, ProfessionalDirections)
@@ -231,3 +233,14 @@ class MediatorTraining(TimeStampModel):
 
     def __str__(self):
         return f"{self.education_institution.title} - {self.education_course.title} ({self.year})"
+
+
+class Page(TimeStampModel):
+    """Модель сторінки списку медіаторів."""
+    content = RichTextUploadingField('Текст')
+    show = models.BooleanField('Відображати текст для користувачів веб-сайту')
+
+    class Meta:
+        verbose_name = 'Сторінка списку медіаторів'
+        verbose_name_plural = 'Сторінка списку медіаторів'
+        db_table = 'mediators_page'

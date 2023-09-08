@@ -4,8 +4,9 @@ from django.forms import Textarea
 from django.urls import resolve
 
 from reversion.admin import VersionAdmin
+from singlemodeladmin import SingleModelAdmin
 
-from .models import Mediator
+from .models import Mediator, Page
 from .forms import MediatorModelForm
 
 
@@ -117,3 +118,8 @@ class MediatorAdmin(VersionAdmin):
                 fields.insert(1, 'change_reason')
         self.fieldsets[0][1]['fields'] = fields
         return self.fieldsets
+
+
+@admin.register(Page)
+class PageAdmin(SingleModelAdmin):
+    pass

@@ -1,7 +1,7 @@
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
-from .models import Mediator
+from .models import Mediator, Page
 from .forms import SearchForm
 from . import services
 
@@ -21,6 +21,10 @@ class MediatorListView(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form'] = SearchForm(self.request.GET)
+        context['page'] = Page.objects.first()
+        context['total_mediators_count'] = services.get_mediators_qs(
+            not self.request.user.is_staff,
+        ).count()
         return context
 
 
