@@ -55,6 +55,11 @@ class SearchForm(forms.Form):
         required=False,
     )
 
+    @property
+    def submitted(self) -> bool:
+        """Чи була форма відправлена."""
+        return bool(set(self.data.keys()) & set(self.fields.keys()))  # перетин множин
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()

@@ -11,7 +11,7 @@
 
     {% include 'registry/list/_partials/form.html' %}
 
-    {% if total_mediators_count > 0 or request.GET %}
+    {% if total_mediators_count > 0 or form.submitted %}
         {% include 'registry/list/_partials/mediators.html' %}
     {% endif %}
 {% endblock %}

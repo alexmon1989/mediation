@@ -1,4 +1,4 @@
-from django.db.models import QuerySet, Value, Q
+from django.db.models import QuerySet, Value
 from django.db.models.functions import Concat
 from .models import Mediator
 
