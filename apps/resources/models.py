@@ -27,5 +27,5 @@ class Resource(TimeStampModel):
     class Meta:
         verbose_name = 'Ресурс'
         verbose_name_plural = 'Ресурси'
-        db_table = 'recources'
+        db_table = 'resources'
         ordering = ('weight', 'created_at', 'title')
