@@ -132,6 +132,12 @@
                         </a>
                     </li>
 
+                    <li class="nav-item {% if 'about/' in request.path %}active{% endif %}">
+                        <a href="{% url 'about:index' %}" class="nav-link {% if 'about/' in request.path %}active{% endif %}">
+                            Про центр
+                        </a>
+                    </li>
+
                     <li class="nav-item dropdown">
 
                         <a href="{% url 'resources:index' %}"
