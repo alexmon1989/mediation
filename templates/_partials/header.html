@@ -125,16 +125,16 @@
 
                     -->
 
-                    <!-- home -->
-                    <li class="nav-item {% if request.path == '/' or 'registry' in request.path %}active{% endif %}">
-                        <a href="{% url 'index' %}" class="nav-link {% if request.path == '/' or 'registry' in request.path %}active{% endif %}">
-                            Реєстр медіаторів
+
+                    <li class="nav-item {% if request.path == '/' or 'about/' in request.path %}active{% endif %}">
+                        <a href="{% url 'about:index' %}" class="nav-link {% if request.path == '/' or 'about/' in request.path %}active{% endif %}">
+                            Про центр
                         </a>
                     </li>
 
-                    <li class="nav-item {% if 'about/' in request.path %}active{% endif %}">
-                        <a href="{% url 'about:index' %}" class="nav-link {% if 'about/' in request.path %}active{% endif %}">
-                            Про центр
+                    <li class="nav-item {% if 'registry/' in request.path %}active{% endif %}">
+                        <a href="{% url 'index' %}" class="nav-link {% if 'registry/' in request.path %}active{% endif %}">
+                            Реєстр медіаторів
                         </a>
                     </li>
 

@@ -19,12 +19,12 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LogoutView
-from apps.registry.views import MediatorListView
+from apps.about.views import index as about_index
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', MediatorListView.as_view(), name="index"),
+    path('', about_index, name="index"),
     path('registry/', include('apps.registry.urls')),
     path('about/', include('apps.about.urls')),
     path('contacts/', include('apps.contacts.urls')),
