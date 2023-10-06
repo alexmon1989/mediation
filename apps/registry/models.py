@@ -130,7 +130,7 @@ class Mediator(TimeStampModel):
                     education_course_title=item.education_course.title,
                     hours=item.hours,
                     year=item.year,
-                    certificate_url=item.certificate.url
+                    certificate_url=item.certificate.url if item.certificate else ''
                 )
             )
         return res
