@@ -6,14 +6,14 @@
     {% if request.user.is_staff and object.specializations.count > 0 %}
         <dt class="col-sm-4">Спеціалізація</dt>
         <dd class="col-sm-8">
-            {{ object.specializations_titles|join:'; ' }}
+            {{ object.specializations_titles|join:'; '|lower|capfirst }}
         </dd>
     {% endif %}
 
     {% if object.specialities.count > 0 %}
         <dt class="col-sm-4">Спеціальність</dt>
         <dd class="col-sm-8">
-            {{ object.specialities_titles|join:'; ' }}
+            {{ object.specialities_titles|join:'; '|lower|capfirst }}
         </dd>
     {% endif %}
 
@@ -38,6 +38,6 @@
 
     {% if object.languages.count > 0 %}
         <dt class="col-sm-4">Мова(и) проведення медіації</dt>
-        <dd class="col-sm-8">{{ object.languages_titles|join:'; ' }}</dd>
+        <dd class="col-sm-8">{{ object.languages_titles|join:'; '|lower|capfirst }}</dd>
     {% endif %}
 </dl>
