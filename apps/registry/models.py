@@ -109,7 +109,16 @@ class Mediator(TimeStampModel):
         res = []
         educations = self.mediatoreducation_set.order_by('year_from').select_related('education_institution')
         for item in educations:
-            res.append(f"{item.education_institution.title} ({item.year_from}-{item.year_to})")
+            years = []
+            years_str = ''
+            if item.year_from:
+                years.append(item.year_from)
+            if item.year_to:
+                years.append(item.year_to)
+            if years:
+                years_str = ' - '.join(years)
+                years_str = f"({years_str})"
+            res.append(f"{item.education_institution.title}{years_str}")
         return res
 
     @cached_property
