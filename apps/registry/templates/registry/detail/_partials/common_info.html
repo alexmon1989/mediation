@@ -12,6 +12,11 @@
         </dd>
     {% endif %}
 
+    {% if object.professional_directions.count > 0 %}
+        <dt class="col-sm-4">Спеціалізація медіатора у сфері інтелектуальної власності, сферах бізнесу</dt>
+        <dd class="col-sm-8">{{ object.professional_directions_titles|join:';<br>' }}</dd>
+    {% endif %}
+
     {% if object.specialities.count > 0 %}
         <dt class="col-sm-4">Спеціальність</dt>
         <dd class="col-sm-8">
@@ -24,11 +29,6 @@
         <dd class="col-sm-8">
             {{ object.educations_titles|join:';<br>' }}
         </dd>
-    {% endif %}
-
-    {% if object.professional_directions.count > 0 %}
-        <dt class="col-sm-4">Професійні напрямки</dt>
-        <dd class="col-sm-8">{{ object.professional_directions_titles|join:';<br>' }}</dd>
     {% endif %}
 
     {% if object.work_format or object.regions.count > 0 %}

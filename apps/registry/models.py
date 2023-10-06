@@ -54,7 +54,7 @@ class Mediator(TimeStampModel):
                                        related_name='basic_training')
     specializations = models.ManyToManyField(Specialization, blank=True, verbose_name='Спеціалізація')
     professional_directions = models.ManyToManyField(ProfessionalDirections, blank=True,
-                                                     verbose_name='Професійні напрямки')
+                                                     verbose_name='Спеціалізація медіатора у сфері інтелектуальної власності, сферах бізнесу')
 
     # Контактна інформація
     address = models.TextField('Адреса для листування', max_length=512, null=True, blank=True)

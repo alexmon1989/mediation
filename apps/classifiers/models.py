@@ -138,7 +138,7 @@ class ProfessionalDirections(TimeStampModel):
         return self.title
 
     class Meta:
-        verbose_name = 'Професійний напрямок'
-        verbose_name_plural = 'Професійні напрямки'
+        verbose_name = 'Спеціалізація медіатора у сфері інтелектуальної власності, сферах бізнесу'
+        verbose_name_plural = 'Спеціалізації медіаторів у сфері інтелектуальної власності, сферах бізнесу'
         db_table = 'cl_professional_directions'
         ordering = ('weight', 'created_at',)

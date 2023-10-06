@@ -34,8 +34,8 @@
                 Дата останніх змін: <span data-bs-toggle="tooltip" data-bs-placement="top" title="{{ object.updated_at }}">{{ object.updated_at|date:"SHORT_DATE_FORMAT" }}</span>
             </div>
         {% else %}
-            {% if object.specializations.count > 0 %}
-                <p class="text-center text-muted mt-3">{{ object.specializations_titles|lowfirst_list|join:'; '|capfirst }}</p>
+            {% if object.professional_directions.count > 0 %}
+                <p class="text-center text-muted mt-3">{{ object.professional_directions_titles|lowfirst_list|join:'; '|capfirst }}</p>
             {% endif %}
         {% endif %}
     </div>
