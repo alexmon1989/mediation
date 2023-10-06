@@ -2,8 +2,6 @@ from django import template
 
 from ..models import Contact
 
-from typing import List
-
 
 register = template.Library()
 

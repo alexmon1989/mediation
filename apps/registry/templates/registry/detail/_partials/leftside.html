@@ -1,4 +1,5 @@
 {% load thumbnail %}
+{% load custom_tags %}
 
 <div class="border shadow p-2">
     {% if mediator.photo %}
@@ -34,7 +35,7 @@
             </div>
         {% else %}
             {% if object.specializations.count > 0 %}
-                <p class="text-center text-muted mt-3">{{ object.specializations_titles|join:'; '|lower|capfirst }}</p>
+                <p class="text-center text-muted mt-3">{{ object.specializations_titles|lowfirst_list|join:'; '|capfirst }}</p>
             {% endif %}
         {% endif %}
     </div>
