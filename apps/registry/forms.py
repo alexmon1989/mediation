@@ -34,7 +34,7 @@ class MediatorModelForm(forms.ModelForm):
 class SearchForm(forms.Form):
     """Форма пошуку."""
     mediator_name = forms.CharField(
-        label="ПІБ",
+        label="Прізвище, ім'я, по батькові",
         max_length=255,
         widget=forms.TextInput(attrs={'placeholder': 'ПІБ медіатора'}),
         required=False,
@@ -68,17 +68,17 @@ class SearchForm(forms.Form):
             Row(
                 Column(
                     Field('mediator_name', css_class='form-control form-control-sm'),
-                    css_class='col-md-6'
+                    css_class='col-md-12'
                 ),
-                Column(
-                    Field('region', css_class='form-select form-select-sm'),
-                    css_class='col-md-6'
-                ),
+                # Column(
+                #     Field('specialization', css_class='form-select form-select-sm'),
+                #     css_class='col-md-6'
+                # ),
             ),
             Row(
                 Column(
-                    Field('specialization', css_class='form-select form-select-sm'),
-                    css_class='col-md-6'
+                    Field('region', css_class='form-select form-select-sm'),
+                   css_class='col-md-6'
                 ),
                 Column(
                     Field('work_format', css_class='form-select form-select-sm'),
