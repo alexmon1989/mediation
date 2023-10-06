@@ -65,7 +65,7 @@
                             {% endfor %}
                         </li>
                         <li>
-                            Email:
+                            e-mail:
                             {% for item in contacts_data.email_set.all %}
                                 <a href="mailto:{{ item.email }}" class="text-white text-dashed">{{ item.email }}</a>{% if not forloop.last %}, {% endif %}
                             {% endfor %}
