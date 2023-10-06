@@ -112,12 +112,12 @@ class Mediator(TimeStampModel):
             years = []
             years_str = ''
             if item.year_from:
-                years.append(item.year_from)
+                years.append(str(item.year_from))
             if item.year_to:
-                years.append(item.year_to)
+                years.append(str(item.year_to))
             if years:
                 years_str = ' - '.join(years)
-                years_str = f"({years_str})"
+                years_str = f" ({years_str})"
             res.append(f"{item.education_institution.title}{years_str}")
         return res
 
