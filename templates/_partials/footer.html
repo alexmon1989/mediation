@@ -59,7 +59,7 @@
                     </svg>
                     <ul class="list-unstyled p-0 m-0 w-100">
                         <li>
-                            Телефон:
+                            телефон:
                             {% for item in contacts_data.phone_set.all %}
                                 <a href="tel:{{ item.value }}" class="text-white text-dashed">{{ item.value }}</a>{% if not forloop.last %}, {% endif %}
                             {% endfor %}
