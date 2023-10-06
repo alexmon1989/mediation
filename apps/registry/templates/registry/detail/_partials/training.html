@@ -1,6 +1,12 @@
 <div class="border p-3">
     <dl class="row mb-0">
-        <dt class="col-sm-4">Освітній заклад</dt>
+        <dt class="col-sm-4 mb-0 mb-sm-2">
+            {% if item.type_code == 'BASIC' %}
+                Суб'єкт освітньої діяльності, що здійснив підготовку
+            {% else %}
+                Організація, що здійснила підготовку
+            {% endif %}
+        </dt>
         <dd class="col-sm-8">{{ item.institution_title }}</dd>
 
         <dt class="col-sm-4">Назва курсу</dt>
