@@ -24,6 +24,7 @@ class TrainingInline(admin.StackedInline):
         'education_course'
     )
 
+
 @admin.register(Mediator)
 class MediatorAdmin(VersionAdmin):
     form = MediatorModelForm
@@ -73,19 +74,6 @@ class MediatorAdmin(VersionAdmin):
                 ],
             },
         ),
-        (
-            "Додаткова інформація",
-            {
-                "fields": [
-                    "job",
-                    "job_experience",
-                    "mediators_membership",
-                    "awards",
-                    "price",
-                    "other",
-                ],
-            },
-        ),
     ]
     formfield_overrides = {
         models.TextField: {'widget': Textarea(
@@ -108,6 +96,7 @@ class MediatorAdmin(VersionAdmin):
             "work_format",
             "regions",
             "professional_directions",
+            "additional_info",
             "active",
         ]
         current_url = resolve(request.path_info).url_name

@@ -1,37 +1,7 @@
-{% if object.has_additional_info %}
+{% if object.additional_info %}
     <h4 class="text-center mt-4">Додаткова інформація</h4>
 
     <hr>
 
-    <dl class="row additional-info">
-        {% if object.job %}
-            <dt class="col-sm-4">Місце роботи</dt>
-            <dd class="col-sm-8">{{ object.job }}</dd>
-        {% endif %}
-
-        {% if object.job_experience %}
-            <dt class="col-sm-4">Досвід роботи</dt>
-            <dd class="col-sm-8">{{ object.job_experience|linebreaks }}</dd>
-        {% endif %}
-
-        {% if object.mediators_membership %}
-            <dt class="col-sm-4">Членство, займані посади в об’єднаннях медіаторів</dt>
-            <dd class="col-sm-8">{{ object.mediators_membership|linebreaks }}</dd>
-        {% endif %}
-
-        {% if object.awards %}
-            <dt class="col-sm-4">Нагороди, почесні звання</dt>
-            <dd class="col-sm-8">{{ object.awards|linebreaks }}</dd>
-        {% endif %}
-
-        {% if object.price %}
-            <dt class="col-sm-4">Вартість послуг медіації</dt>
-            <dd class="col-sm-8">{{ object.price|linebreaks }}</dd>
-        {% endif %}
-
-        {% if object.other %}
-            <dt class="col-sm-4">Інше</dt>
-            <dd class="col-sm-8">{{ object.other|linebreaks }}</dd>
-        {% endif %}
-    </dl>
+    {{ object.additional_info|safe }}
 {% endif %}

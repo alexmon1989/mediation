@@ -4,6 +4,7 @@ from django.utils.functional import cached_property
 from django.urls import reverse
 
 from ckeditor_uploader.fields import RichTextUploadingField
+from ckeditor.fields import RichTextField
 
 from apps.common.models import TimeStampModel
 from apps.classifiers.models import (EducationalInstitution, EducationalCourse, Speciality, Language, WorkFormat,
@@ -61,13 +62,7 @@ class Mediator(TimeStampModel):
     phones = models.CharField('Номери телефонів', max_length=255, null=True, blank=True)
 
     # Додаткова інформація
-    job = models.CharField('Місце роботи', max_length=255, null=True, blank=True)
-    job_experience = models.TextField('Досвід роботи', max_length=2048, null=True, blank=True)
-    mediators_membership = models.TextField('Членство, займані посади в об’єднаннях медіаторів', max_length=2048,
-                                            null=True, blank=True)
-    awards = models.TextField('Нагороди, почесні звання', max_length=1024, null=True, blank=True)
-    price = models.TextField('Вартість послуг медіації', max_length=1024, null=True, blank=True)
-    other = models.TextField('Інше', max_length=1024, null=True, blank=True)
+    additional_info = RichTextField('Додаткова інформація', max_length=2048, null=True, blank=True)
 
     active = models.BooleanField('Активний', default=False, help_text='Визначає чи буде особу опубліковано на сайті')
     updated_at = models.DateTimeField(auto_now_add=True, verbose_name='Оновлено')
@@ -146,17 +141,6 @@ class Mediator(TimeStampModel):
     @cached_property
     def additional_trainings(self) -> List[MediatorTrainingDataClass]:
         return list(filter(lambda x: x.type_code == 'ADDITIONAL', self.trainings_detailed))
-
-    @property
-    def has_additional_info(self) -> bool:
-        return any([
-            self.job,
-            self.job_experience,
-            self.mediators_membership,
-            self.awards,
-            self.price,
-            self.other,
-        ])
 
     @property
     def has_contact_info(self) -> bool:
