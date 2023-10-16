@@ -62,7 +62,7 @@ class Mediator(TimeStampModel):
     phones = models.CharField('Номери телефонів', max_length=255, null=True, blank=True)
 
     # Додаткова інформація
-    additional_info = RichTextField('Додаткова інформація', max_length=2048, null=True, blank=True)
+    additional_info = RichTextField('Додаткова інформація', max_length=16384, null=True, blank=True)
 
     active = models.BooleanField('Активний', default=False, help_text='Визначає чи буде особу опубліковано на сайті')
     updated_at = models.DateTimeField(auto_now_add=True, verbose_name='Оновлено')
