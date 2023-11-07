@@ -7,7 +7,7 @@ register = template.Library()
 def lowfirst_list(values: list) -> list:
     res = []
     for item in values:
-        if item:
+        if item and len(item) > 1 and not item.isupper():
             res.append(item[0].lower() + item[1:])
         else:
             res.append(item)
