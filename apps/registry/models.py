@@ -126,7 +126,7 @@ class Mediator(TimeStampModel):
         res = []
         for item in self.mediatortraining_set.select_related(
                 'education_institution', 'education_course'
-        ).order_by('year'):
+        ).order_by('year', 'pk'):
             res.append(
                 MediatorTrainingDataClass(
                     type_code=item.training_type,
