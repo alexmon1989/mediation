@@ -35,9 +35,9 @@
         <dt class="col-sm-4">Формат роботи, регіон</dt>
         <dd class="col-sm-8">
             {% if object.work_format %}
-                {{ object.work_format.title }}, {{ object.regions_titles|lowfirst_list|join:', ' }}
+                {{ object.work_format.title }}, {{ object.regions_titles|join:', ' }}
             {% else %}
-                {{ object.regions_titles|lowfirst_list|join:', '|capfirst }}
+                {{ object.regions_titles|join:', ' }}
             {% endif %}
         </dd>
     {% endif %}
