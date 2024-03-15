@@ -107,7 +107,7 @@ class Mediator(TimeStampModel):
     def educations_titles(self) -> List[str]:
         """Повертає список із освітами медіатора."""
         res = []
-        educations = self.mediatoreducation_set.order_by('year_from').select_related('education_institution')
+        educations = self.mediatoreducation_set.order_by('pk', 'year_from').select_related('education_institution')
         for item in educations:
             years = []
             years_str = ''

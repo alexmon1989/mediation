@@ -13,10 +13,10 @@
 
             <div class="col-12 col-lg-4 mb-4">
 
-                <p class="fw-bold">Реєстр ІР-медіаторів</p>
+                <p class="fw-bold">Реєстр ІР-медіаторів (Register of IP mediators)</p>
 
                 <div class="my-4"><!-- copyright -->
-                    <p class="small mb-0">&copy; {% now "Y" %} Український національний офіс інтелектуальної власності та інновацій.</p>
+                    <p class="small mb-2">&copy; {% now "Y" %} Український національний офіс інтелектуальної власності та інновацій (Ukrainian National Office for Intellectual Property and Innovation).</p>
                 </div>
 
                 <!-- social icons -->
@@ -36,7 +36,7 @@
 
             <div class="col-12 col-lg-4 mb-4">
 
-                <h3 class="small mb-4">ЗВ'ЯЗОК З НАМИ</h3>
+                <h3 class="small mb-4">ЗВ'ЯЗОК З НАМИ (CONTACT US)</h3>
                 {% contacts_data as contacts_data %}
 
                 <div class="small d-flex align-items-start my-3">
@@ -59,7 +59,7 @@
                     </svg>
                     <ul class="list-unstyled p-0 m-0 w-100">
                         <li>
-                            телефон:
+                            телефон (telephone number):<br>
                             {% for item in contacts_data.phone_set.all %}
                                 <a href="tel:{{ item.value }}" class="text-white text-dashed">{{ item.value }}</a>{% if not forloop.last %}, {% endif %}
                             {% endfor %}
@@ -78,24 +78,24 @@
 
             <div class="col-12 col-lg-4 mb-4">
 
-                <h3 class="small mb-4">МЕНЮ</h3>
+                <h3 class="small mb-4">МЕНЮ (MENU)</h3>
 
                 <ul class="list-unstyled">
                     <li class="list-item mb-2">
                         <i class="fi fi-arrow-end me-2 smaller"></i>
-                        <a class="text-gray-400" href="{% url 'about:index' %}">Про Центр</a>
+                        <a class="text-gray-400" href="{% url 'about:index' %}">Про Центр (About the Center)</a>
                     </li>
                     <li class="list-item mb-2">
                         <i class="fi fi-arrow-end me-2 smaller"></i>
-                        <a class="text-gray-400" href="{% url 'registry:index' %}">Реєстр ІР-медіаторів</a>
+                        <a class="text-gray-400" href="{% url 'registry:index' %}">Реєстр ІР-медіаторів (Register of IP mediators)</a>
                     </li>
                     <li class="list-item mb-2">
                         <i class="fi fi-arrow-end me-2 smaller"></i>
-                        <a class="text-gray-400" href="{% url 'resources:index' %}">Ресурси</a>
+                        <a class="text-gray-400" href="{% url 'resources:index' %}">Ресурси (Resources)</a>
                     </li>
                     <li class="list-item mb-2">
                         <i class="fi fi-arrow-end me-2 smaller"></i>
-                        <a class="text-gray-400" href="{% url 'contacts:index' %}">Зворотний зв'язок</a>
+                        <a class="text-gray-400" href="{% url 'contacts:index' %}">Зворотний зв'язок (Feedback)</a>
                     </li>
                 </ul>
 

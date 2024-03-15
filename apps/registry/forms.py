@@ -34,14 +34,14 @@ class MediatorModelForm(forms.ModelForm):
 class SearchForm(forms.Form):
     """Форма пошуку."""
     mediator_name = forms.CharField(
-        label="Прізвище, ім'я, по батькові",
+        label="Прізвище, ім'я, по батькові (Last name, first name, patronymic)",
         max_length=255,
-        widget=forms.TextInput(attrs={'placeholder': 'ПІБ медіатора'}),
+        widget=forms.TextInput(attrs={'placeholder': 'ПІБ медіатора (Last name, first name, patronymic)'}),
         required=False,
     )
     region = forms.ModelChoiceField(
         queryset=Region.objects.order_by('weight', 'title'),
-        label='Регіон роботи',
+        label='Регіон роботи (Region of work)',
         required=False,
     )
     specialization = forms.ModelChoiceField(
@@ -51,7 +51,7 @@ class SearchForm(forms.Form):
     )
     work_format = forms.ModelChoiceField(
         queryset=WorkFormat.objects.order_by('weight', 'title'),
-        label='Формат роботи',
+        label='Формат роботи (Format of work)',
         required=False,
     )
 
