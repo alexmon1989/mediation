@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <!--
     CONTACT FORM : AJAX [TESTED|WORKING AS IT IS]
 
@@ -47,7 +49,7 @@
       data-ajax-control-alert-unexpected="#contactErrorUnexpected"
       data-ajax-control-alert-mandaroty="#contactErrorMandatory"
 
-      data-error-toast-text="<i class='fi fi-circle-spin fi-spin float-start'></i> Будь ласка, заповніть усі обов'язкові поля!"
+      data-error-toast-text="<i class='fi fi-circle-spin fi-spin float-start'></i> {% trans "Будь ласка, заповніть усі обов'язкові поля!" %}"
       data-error-toast-delay="2000"
       data-error-toast-position="bottom-center"
 
@@ -69,7 +71,7 @@
 
     <div class="form-floating mb-3">
         <input required placeholder="Ім'я" id="contact_name" name="contact_name" type="text" class="form-control">
-        <label for="contact_name">Ім'я (Name)*</label>
+        <label for="contact_name">{% trans "Ім'я" %}*</label>
     </div>
 
     <div class="form-floating mb-3">
@@ -79,13 +81,13 @@
 
     <div class="form-floating mb-3">
         <input placeholder="Тема" id="contact_subject" name="contact_subject" type="text" class="form-control">
-        <label for="contact_subject">Тема (Subject)*</label>
+        <label for="contact_subject">{% trans "Тема" %}*</label>
     </div>
 
     <div class="form-floating mb-3">
         <textarea required placeholder="Повідомлення" id="contact_message" name="contact_message" class="form-control"
                   rows="3" style="min-height:120px"></textarea>
-        <label for="contact_message">Повідомлення (Message)*</label>
+        <label for="contact_message">{% trans "Повідомлення" %}*</label>
     </div>
 
     <!--
@@ -97,22 +99,22 @@
 
     <!-- {:err:unexpected:} internal server error -->
     <div id="contactErrorUnexpected" class="hide alert alert-danger p-3">
-        Неочікувана помилка!
+        {% trans "Неочікувана помилка!" %}
     </div>
 
     <!-- {:err:required:} mandatory fields -->
     <div id="contactErrorMandatory" class="hide alert alert-danger p-3">
-        Будь ласка, заповніть усі обов'язкові поля!
+        {% trans "Будь ласка, заповніть усі обов'язкові поля!" %}
     </div>
 
     <!-- {:success:} message sent -->
     <div id="contactSuccess" class="hide alert alert-success p-3">
-        Дякуємо за повідомлення! Очікуйте на відповідь найближчим часом.
+        {% trans "Дякуємо за повідомлення! Очікуйте на відповідь найближчим часом." %}
     </div>
 
 
     <button type="submit" class="btn btn-primary w-100">
-        Відправити повідомлення (Send message)
+        {% trans "Відправити повідомлення" %}
     </button>
 
 </form>

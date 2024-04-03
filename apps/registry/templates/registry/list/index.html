@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block page_title %}Список осіб{% endblock %}
+{% block page_title %}{% trans "Список осіб" %}{% endblock %}
 
 {% block body %}
     {% include 'registry/list/_partials/title.html' %}

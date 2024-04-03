@@ -20,19 +20,24 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LogoutView
 from apps.about.views import index as about_index
+from django.conf.urls.i18n import i18n_patterns
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('cases/', include('apps.cases.urls')),
+    path("logout/", LogoutView.as_view(), name="logout"),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+]
+
+urlpatterns += i18n_patterns(
     path('', about_index, name="index"),
     path('registry/', include('apps.registry.urls')),
     path('about/', include('apps.about.urls')),
     path('contacts/', include('apps.contacts.urls')),
     path('resources/', include('apps.resources.urls')),
-    path('cases/', include('apps.cases.urls')),
-    path("logout/", LogoutView.as_view(), name="logout"),
-    path('ckeditor/', include('ckeditor_uploader.urls')),
-]
+    prefix_default_language=False
+)
 
 if settings.DEBUG:
     urlpatterns.append(

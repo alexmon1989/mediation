@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
-{% block page_title %}Зворотній зв'язок{% endblock %}
+{% load i18n %}
+
+{% block page_title %}{% trans "Зворотній зв'язок" %}{% endblock %}
 
 {% block body %}
     {% include 'contacts/index/_partials/title.html' %}

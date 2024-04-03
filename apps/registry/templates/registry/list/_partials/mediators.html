@@ -1,11 +1,12 @@
 {% load thumbnail %}
+{% load i18n %}
 
 <div class="section bg-theme-color-light py-5">
     <div class="container">
         <div class="row">
             {% if request.GET %}
                 <div class="col-12 mb-2">
-                    <p>Знайдено медіаторів: <strong>{{ object_list.count }}</strong></p>
+                    <p>{% trans "Знайдено медіаторів" %}: <strong>{{ object_list.count }}</strong></p>
                 </div>
             {% endif %}
 
@@ -31,9 +32,9 @@
                                 <h5 class="mb-0 text-center">{{ mediator.last_name }} {{ mediator.first_name }}</h5>
                                 {% if request.user.is_staff %}
                                     {% if mediator.active %}
-                                        <div class="text-green-700 fw-bold text-center mt-2 small">Профіль активний</div>
+                                        <div class="text-green-700 fw-bold text-center mt-2 small">{% trans "Профіль активний" %}</div>
                                     {% else %}
-                                        <div class="text-red-700 fw-bold text-center mt-2 small">Профіль неактивний</div>
+                                        <div class="text-red-700 fw-bold text-center mt-2 small">{% trans "Профіль неактивний" %}</div>
                                     {% endif %}
                                 {% endif %}
                             </div>

@@ -1,0 +1,22 @@
+{% load custom_tags %}
+{% load i18n %}
+
+{% get_current_language as LANGUAGE_CODE %}
+<ul class="list-inline mb-0">
+    {% spaceless %}
+    <li class="list-inline-item border-end  pe-2">
+        {% if LANGUAGE_CODE != 'uk' %}
+            <a href="{% change_language 'uk' %}">UA</a>
+        {% else %}
+            <span class="fw-medium">UA</span>
+        {% endif %}
+    </li>
+    <li class="list-inline-item">
+        {% if LANGUAGE_CODE != 'en' %}
+            <a href="{% change_language 'en' %}">ENG</a>
+        {% else %}
+            <span class="fw-medium">ENG</span>
+        {% endif %}
+    </li>
+    {% endspaceless %}
+</ul>

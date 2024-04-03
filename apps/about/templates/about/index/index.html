@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
-{% block page_title %}Про центр{% endblock %}
+{% load i18n %}
+
+{% block page_title %}{% trans "Про центр" %}{% endblock %}
 
 {% block body %}
     {% include 'about/index/_partials/title.html' %}

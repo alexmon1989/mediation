@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.translation import gettext_lazy as _
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Row, Column, Field, Div
@@ -34,24 +35,24 @@ class MediatorModelForm(forms.ModelForm):
 class SearchForm(forms.Form):
     """Форма пошуку."""
     mediator_name = forms.CharField(
-        label="Прізвище, ім'я, по батькові (Last name, first name, patronymic)",
+        label=_("Прізвище, ім'я, по батькові"),
         max_length=255,
-        widget=forms.TextInput(attrs={'placeholder': 'ПІБ медіатора (Last name, first name, patronymic)'}),
+        widget=forms.TextInput(attrs={'placeholder': _('ПІБ медіатора')}),
         required=False,
     )
     region = forms.ModelChoiceField(
         queryset=Region.objects.order_by('weight', 'title'),
-        label='Регіон роботи (Region of work)',
+        label=_('Регіон роботи'),
         required=False,
     )
     specialization = forms.ModelChoiceField(
         queryset=Specialization.objects.order_by('weight', 'title'),
-        label='Спеціалізація',
+        label=_('Спеціалізація'),
         required=False,
     )
     work_format = forms.ModelChoiceField(
         queryset=WorkFormat.objects.order_by('weight', 'title'),
-        label='Формат роботи (Format of work)',
+        label=_('Формат роботи'),
         required=False,
     )
 

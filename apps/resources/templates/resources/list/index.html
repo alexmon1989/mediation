@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
-{% block page_title %}Список ресурсів{% endblock %}
+{% load i18n %}
+
+{% block page_title %}{% trans "Список ресурсів" %}{% endblock %}
 
 {% block body %}
     {% include 'resources/list/_partials/title.html' %}

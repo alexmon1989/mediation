@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 {% load resource_extras %}
 
 <!-- Header -->
@@ -128,13 +129,13 @@
 
                     <li class="nav-item {% if request.path == '/' or 'about/' in request.path %}active{% endif %}">
                         <a href="{% url 'about:index' %}" class="nav-link {% if request.path == '/' or 'about/' in request.path %}active{% endif %}">
-                            Про Центр
+                            {% trans "Про Центр" %}
                         </a>
                     </li>
 
                     <li class="nav-item {% if 'registry/' in request.path %}active{% endif %}">
                         <a href="{% url 'registry:index' %}" class="nav-link {% if 'registry/' in request.path %}active{% endif %}">
-                            Реєстр медіаторів
+                            {% trans "Реєстр медіаторів" %}
                         </a>
                     </li>
 
@@ -146,7 +147,7 @@
                            data-bs-toggle="dropdown"
                            aria-haspopup="true"
                            aria-expanded="false">
-                            Ресурси
+                            {% trans "Ресурси" %}
                         </a>
 
                         <div aria-labelledby="mainNavBlog"
@@ -165,7 +166,7 @@
 
                     <li class="nav-item {% if 'contacts/' in request.path %}active{% endif %}">
                         <a href="{% url 'contacts:index' %}" class="nav-link {% if 'contacts/' in request.path %}active{% endif %}">
-                            Зворотний зв’язок
+                            {% trans "Зворотний зв’язок" %}
                         </a>
                     </li>
 
@@ -173,11 +174,11 @@
                 <!-- /navbar : navigation -->
             </div>
 
-
+            {% include '_partials/languages.html' %}
 
             {% if request.user.is_authenticated %}
                 <!-- OPTIONS -->
-                <ul class="list-inline list-unstyled mb-0 d-flex align-items-end">
+                <ul class="list-inline list-unstyled mb-0 ms-3 d-flex align-items-end">
 
                     <li class="list-inline-item mx-1 dropdown">
 

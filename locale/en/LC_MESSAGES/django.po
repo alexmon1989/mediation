@@ -1,0 +1,240 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-03 15:29+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/about/templates/about/index/index.html:5
+#, fuzzy
+#| msgid "Про Центр"
+msgid "Про центр"
+msgstr "About the Center"
+
+#: apps/contacts/templates/contacts/index/_partials/details.html:17
+msgid "Центр медіації та посередництва IP офісу"
+msgstr "Mediation Center of the IP Office"
+
+#: apps/contacts/templates/contacts/index/_partials/details.html:28
+msgid "Режим роботи"
+msgstr "Operating mode"
+
+#: apps/contacts/templates/contacts/index/_partials/details.html:39
+msgid "Телефон"
+msgstr "Telephone number"
+
+#: apps/contacts/templates/contacts/index/_partials/form.html:74
+msgid "Ім'я"
+msgstr "Name"
+
+#: apps/contacts/templates/contacts/index/_partials/form.html:84
+msgid "Тема"
+msgstr "Subject"
+
+#: apps/contacts/templates/contacts/index/_partials/form.html:90
+msgid "Повідомлення"
+msgstr "Message"
+
+#: apps/contacts/templates/contacts/index/_partials/form.html:102
+msgid "Неочікувана помилка!"
+msgstr "Unexpected error!"
+
+#: apps/contacts/templates/contacts/index/_partials/form.html:107
+msgid "Будь ласка, заповніть усі обов'язкові поля!"
+msgstr "Please fill in all required fields!"
+
+#: apps/contacts/templates/contacts/index/_partials/form.html:112
+msgid "Дякуємо за повідомлення! Очікуйте на відповідь найближчим часом."
+msgstr "Thanks for the message! Expect a reply soon."
+
+#: apps/contacts/templates/contacts/index/_partials/form.html:117
+msgid "Відправити повідомлення"
+msgstr "Send message"
+
+#: apps/contacts/templates/contacts/index/_partials/title.html:11
+msgid "Контакти"
+msgstr "Feedback"
+
+#: apps/contacts/templates/contacts/index/index.html:5
+msgid "Зворотній зв'язок"
+msgstr "Feedback"
+
+#: apps/registry/forms.py:38
+msgid "Прізвище, ім'я, по батькові"
+msgstr "Name"
+
+#: apps/registry/forms.py:40
+msgid "ПІБ медіатора"
+msgstr "Name of the mediator"
+
+#: apps/registry/forms.py:45
+msgid "Регіон роботи"
+msgstr "Region of work"
+
+#: apps/registry/forms.py:50
+msgid "Спеціалізація"
+msgstr "Specialization"
+
+#: apps/registry/forms.py:55
+msgid "Формат роботи"
+msgstr "Work format"
+
+#: apps/registry/templates/registry/list/_partials/mediators.html:9
+msgid "Знайдено медіаторів"
+msgstr "Mediators found"
+
+#: apps/registry/templates/registry/list/_partials/mediators.html:35
+msgid "Профіль активний"
+msgstr "Active"
+
+#: apps/registry/templates/registry/list/_partials/mediators.html:37
+msgid "Профіль неактивний"
+msgstr "Inactive"
+
+#: apps/registry/templates/registry/list/_partials/pagination.html:8
+msgid "Перша"
+msgstr "First"
+
+#: apps/registry/templates/registry/list/_partials/pagination.html:12
+msgid "Попередня"
+msgstr "Previous"
+
+#: apps/registry/templates/registry/list/_partials/pagination.html:34
+msgid "Наступна"
+msgstr "Next"
+
+#: apps/registry/templates/registry/list/_partials/pagination.html:39
+msgid "Остання"
+msgstr "Last"
+
+#: apps/registry/templates/registry/list/_partials/submit.html:2
+msgid "Пошук"
+msgstr "Search"
+
+#: apps/registry/templates/registry/list/_partials/title.html:11
+#: templates/base.html:6
+msgid "Реєстр IP медіаторів"
+msgstr "Register of IP mediators"
+
+#: apps/registry/templates/registry/list/index.html:4
+msgid "Список осіб"
+msgstr "List of persons"
+
+#: apps/resources/templates/resources/detail/_partials/title.html:16
+#: templates/_partials/header.html:138
+msgid "Реєстр медіаторів"
+msgstr "Register of IP mediators"
+
+#: apps/resources/templates/resources/detail/_partials/title.html:19
+#: apps/resources/templates/resources/list/_partials/title.html:11
+#: apps/resources/templates/resources/list/index.html:5
+msgid "Список ресурсів"
+msgstr "Resources list"
+
+#: apps/users/admin.py:16 apps/users/admin.py:44
+msgid "Personal info"
+msgstr ""
+
+#: apps/users/admin.py:21 apps/users/admin.py:49
+msgid "Permissions"
+msgstr ""
+
+#: apps/users/admin.py:24 apps/users/admin.py:52
+msgid "Important dates"
+msgstr ""
+
+#: apps/users/managers.py:15
+msgid "The Email must be set"
+msgstr ""
+
+#: apps/users/managers.py:30
+msgid "Superuser must have is_staff=True."
+msgstr ""
+
+#: apps/users/managers.py:32
+msgid "Superuser must have is_superuser=True."
+msgstr ""
+
+#: apps/users/models.py:9
+msgid "email address"
+msgstr ""
+
+#: core/settings.py:130
+msgid "Українська"
+msgstr ""
+
+#: core/settings.py:131
+msgid "Англійська"
+msgstr ""
+
+#: templates/_partials/footer.html:17
+#, fuzzy
+#| msgid "Реєстр ІР медіаторів"
+msgid "Реєстр ІР-медіаторів"
+msgstr "Register of IP mediators"
+
+#: templates/_partials/footer.html:20
+msgid "Український національний офіс інтелектуальної власності та інновацій"
+msgstr "Ukrainian National Office for Intellectual Property and Innovation"
+
+#: templates/_partials/footer.html:40
+msgid "ЗВ'ЯЗОК З НАМИ"
+msgstr "CONTACT US"
+
+#: templates/_partials/footer.html:63
+msgid "телефон"
+msgstr "telephone number"
+
+#: templates/_partials/footer.html:82
+msgid "МЕНЮ"
+msgstr "MENU"
+
+#: templates/_partials/footer.html:87 templates/_partials/header.html:132
+msgid "Про Центр"
+msgstr "About the Center"
+
+#: templates/_partials/footer.html:91
+msgid "Реєстр ІР медіаторів"
+msgstr "Register of IP mediators"
+
+#: templates/_partials/footer.html:95 templates/_partials/header.html:150
+msgid "Ресурси"
+msgstr "Resources"
+
+#: templates/_partials/footer.html:99
+msgid "Зворотний зв'язок"
+msgstr "Feedback"
+
+#: templates/_partials/header.html:169
+msgid "Зворотний зв’язок"
+msgstr "Feedback"
+
+#: templates/reversion/revision_form.html:7
+msgid "Home"
+msgstr ""
+
+#: templates/reversion/revision_form.html:11
+msgid "History"
+msgstr ""
+
+#: templates/reversion/revision_form.html:12
+#, python-format
+msgid "Revert %(verbose_name)s"
+msgstr ""
+
+#: templates/reversion/revision_form.html:21
+msgid "Press the save button below to revert to this version of the object."
+msgstr ""
