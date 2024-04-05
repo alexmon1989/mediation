@@ -5,6 +5,7 @@ from django.urls import resolve
 
 from reversion.admin import VersionAdmin
 from singlemodeladmin import SingleModelAdmin
+from modeltranslation.admin import TranslationAdmin
 
 from .models import Mediator, Page
 from .forms import MediatorModelForm
@@ -110,5 +111,5 @@ class MediatorAdmin(VersionAdmin):
 
 
 @admin.register(Page)
-class PageAdmin(SingleModelAdmin):
+class PageAdmin(SingleModelAdmin, TranslationAdmin):
     pass
