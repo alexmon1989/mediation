@@ -1,4 +1,5 @@
 {% load thumbnail %}
+{% load i18n %}
 {% load custom_tags %}
 
 <div class="border shadow p-2">
@@ -23,15 +24,15 @@
 
         {% if request.user.is_staff %}
             <div class="text-indigo-800 mt-2">
-                Заява №{{ object.application_number }} від {{ object.application_date|date:"SHORT_DATE_FORMAT" }}
+                {% trans "Заява" %} №{{ object.application_number }} {% trans "від" %} {{ object.application_date|date:"SHORT_DATE_FORMAT" }}
             </div>
             {% if object.active %}
-                <div class="text-green-700 fw-bold">Профіль активний</div>
+                <div class="text-green-700 fw-bold">{% trans "Профіль активний" %}</div>
             {% else %}
-                <div class="text-red-700 fw-bold">Профіль неактивний</div>
+                <div class="text-red-700 fw-bold">{% trans "Профіль неактивний" %}</div>
             {% endif %}
             <div class="text-indigo-800 mb-2">
-                Дата останніх змін: <span data-bs-toggle="tooltip" data-bs-placement="top" title="{{ object.updated_at }}">{{ object.updated_at|date:"SHORT_DATE_FORMAT" }}</span>
+                {% trans "Дата останніх змін" %}: <span data-bs-toggle="tooltip" data-bs-placement="top" title="{{ object.updated_at }}">{{ object.updated_at|date:"SHORT_DATE_FORMAT" }}</span>
             </div>
         {% else %}
             {% if object.professional_directions.count > 0 %}

@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <div class="section jarallax vh-25 text-center-xs overlay-dark overlay-opacity-2 text-white d-flex align-items-center justify-content-center">
 
@@ -12,9 +13,10 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb small">
                 <li class="breadcrumb-item">
-                    <a class="text-white" href="{% url 'registry:index' %}">Реєстр медіаторів</a>
+                    <a class="text-white" href="{% url 'registry:index' %}">{% trans "Реєстр медіаторів" %}</a>
                 </li>
-                <li class="breadcrumb-item text-white active" aria-current="page">Профіль особи</li>
+                <li class="breadcrumb-item text-white active"
+                    aria-current="page">{% trans "Профіль особи" %}</li>
             </ol>
         </nav>
     </div>

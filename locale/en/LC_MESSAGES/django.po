@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-03 15:29+0300\n"
+"POT-Creation-Date: 2024-04-08 13:29+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,8 +19,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps/about/templates/about/index/index.html:5
-#, fuzzy
-#| msgid "Про Центр"
 msgid "Про центр"
 msgstr "About the Center"
 
@@ -35,6 +33,11 @@ msgstr "Operating mode"
 #: apps/contacts/templates/contacts/index/_partials/details.html:39
 msgid "Телефон"
 msgstr "Telephone number"
+
+#: apps/contacts/templates/contacts/index/_partials/form.html:52
+#: apps/contacts/templates/contacts/index/_partials/form.html:107
+msgid "Будь ласка, заповніть усі обов'язкові поля!"
+msgstr "Please fill in all required fields!"
 
 #: apps/contacts/templates/contacts/index/_partials/form.html:74
 msgid "Ім'я"
@@ -51,10 +54,6 @@ msgstr "Message"
 #: apps/contacts/templates/contacts/index/_partials/form.html:102
 msgid "Неочікувана помилка!"
 msgstr "Unexpected error!"
-
-#: apps/contacts/templates/contacts/index/_partials/form.html:107
-msgid "Будь ласка, заповніть усі обов'язкові поля!"
-msgstr "Please fill in all required fields!"
 
 #: apps/contacts/templates/contacts/index/_partials/form.html:112
 msgid "Дякуємо за повідомлення! Очікуйте на відповідь найближчим часом."
@@ -85,6 +84,7 @@ msgid "Регіон роботи"
 msgstr "Region of work"
 
 #: apps/registry/forms.py:50
+#: apps/registry/templates/registry/detail/_partials/common_info.html:10
 msgid "Спеціалізація"
 msgstr "Specialization"
 
@@ -92,17 +92,174 @@ msgstr "Specialization"
 msgid "Формат роботи"
 msgstr "Work format"
 
-#: apps/registry/templates/registry/list/_partials/mediators.html:9
-msgid "Знайдено медіаторів"
-msgstr "Mediators found"
+#: apps/registry/templates/registry/detail/_partials/additional_info.html:3
+msgid "Додаткова інформація"
+msgstr "Additional information"
 
+#: apps/registry/templates/registry/detail/_partials/common_info.html:4
+msgid "Загальна інформація"
+msgstr "General information"
+
+#: apps/registry/templates/registry/detail/_partials/common_info.html:17
+msgid "Спеціальність"
+msgstr "Specialty"
+
+#: apps/registry/templates/registry/detail/_partials/common_info.html:24
+msgid "Освіта"
+msgstr "Education"
+
+#: apps/registry/templates/registry/detail/_partials/common_info.html:31
+msgid "Спеціалізація у сфері інтелектуальної власності, сферах бізнесу"
+msgstr ""
+"Specialization in the sphere of intellectual property, spheres of business"
+
+#: apps/registry/templates/registry/detail/_partials/common_info.html:36
+msgid "Формат роботи, регіон"
+msgstr "Work format, region"
+
+#: apps/registry/templates/registry/detail/_partials/common_info.html:47
+msgid "Мова(и) проведення медіації"
+msgstr "Language(s) of mediation"
+
+#: apps/registry/templates/registry/detail/_partials/contact_info.html:4
+msgid "Контактна інформація"
+msgstr "Contact Information"
+
+#: apps/registry/templates/registry/detail/_partials/contact_info.html:10
+msgid "Адреса для листування"
+msgstr "Mailing address"
+
+#: apps/registry/templates/registry/detail/_partials/contact_info.html:15
+msgid "Електронна адреса"
+msgstr "Email"
+
+#: apps/registry/templates/registry/detail/_partials/contact_info.html:20
+msgid "Номери телефонів"
+msgstr "Telephone numbers"
+
+#: apps/registry/templates/registry/detail/_partials/leftside.html:27
+msgid "Заява"
+msgstr "Application"
+
+#: apps/registry/templates/registry/detail/_partials/leftside.html:27
+msgid "від"
+msgstr "from"
+
+#: apps/registry/templates/registry/detail/_partials/leftside.html:30
 #: apps/registry/templates/registry/list/_partials/mediators.html:35
 msgid "Профіль активний"
 msgstr "Active"
 
+#: apps/registry/templates/registry/detail/_partials/leftside.html:32
 #: apps/registry/templates/registry/list/_partials/mediators.html:37
 msgid "Профіль неактивний"
 msgstr "Inactive"
+
+#: apps/registry/templates/registry/detail/_partials/leftside.html:35
+msgid "Дата останніх змін"
+msgstr "Last modified"
+
+#: apps/registry/templates/registry/detail/_partials/navbar.html:12
+msgid "Бібліографія"
+msgstr "Bibliography"
+
+#: apps/registry/templates/registry/detail/_partials/navbar.html:21
+msgid "Статистика"
+msgstr "Statistics"
+
+#: apps/registry/templates/registry/detail/_partials/navbar.html:27
+msgid "Дії"
+msgstr "Actions"
+
+#: apps/registry/templates/registry/detail/_partials/navbar.html:47
+msgid "Сформувати виписку"
+msgstr "Create an extract"
+
+#: apps/registry/templates/registry/detail/_partials/navbar.html:58
+msgid "Редагувати дані"
+msgstr "Edit"
+
+#: apps/registry/templates/registry/detail/_partials/navbar.html:72
+msgid "Видалити"
+msgstr "Delete"
+
+#: apps/registry/templates/registry/detail/_partials/statistics.html:6
+msgid "Кількість справ за період"
+msgstr "Number of cases per period"
+
+#: apps/registry/templates/registry/detail/_partials/statistics.html:12
+msgid "Дата з"
+msgstr "Date from"
+
+#: apps/registry/templates/registry/detail/_partials/statistics.html:18
+msgid "Дата по"
+msgstr "Date to"
+
+#: apps/registry/templates/registry/detail/_partials/statistics.html:24
+msgid "Отримати"
+msgstr "Get"
+
+#: apps/registry/templates/registry/detail/_partials/statistics.html:28
+msgid "За обраний період"
+msgstr "For the selected period"
+
+#: apps/registry/templates/registry/detail/_partials/statistics.html:29
+msgid "Всього"
+msgstr "Total"
+
+#: apps/registry/templates/registry/detail/_partials/title.html:16
+#: apps/resources/templates/resources/detail/_partials/title.html:16
+#: templates/_partials/header.html:138
+msgid "Реєстр медіаторів"
+msgstr "Register of IP mediators"
+
+#: apps/registry/templates/registry/detail/_partials/title.html:19
+msgid "Профіль особи"
+msgstr "Person's profile"
+
+#: apps/registry/templates/registry/detail/_partials/training.html:7
+msgid "Суб'єкт освітньої діяльності, що здійснив підготовку"
+msgstr "The subject of educational activity that carried out the training"
+
+#: apps/registry/templates/registry/detail/_partials/training.html:9
+msgid "Організація, що здійснила підготовку"
+msgstr "The organization that carried out the training"
+
+#: apps/registry/templates/registry/detail/_partials/training.html:14
+msgid "Назва курсу"
+msgstr "Name of the course"
+
+#: apps/registry/templates/registry/detail/_partials/training.html:18
+msgid "Кількість годин"
+msgstr "Number of hours"
+
+#: apps/registry/templates/registry/detail/_partials/training.html:23
+msgid "Рік навчання"
+msgstr "Year of study"
+
+#: apps/registry/templates/registry/detail/_partials/training.html:28
+msgid "Скан-копія свідоцтва"
+msgstr "Scan copy of the certificate"
+
+#: apps/registry/templates/registry/detail/_partials/trainings.html:3
+msgid "Підготовка медіатора"
+msgstr "Mediator training"
+
+#: apps/registry/templates/registry/detail/_partials/trainings.html:8
+msgid "Базова підготовка"
+msgstr "Basic trainings"
+
+#: apps/registry/templates/registry/detail/_partials/trainings.html:18
+msgid "Спеціалізована підготовка"
+msgstr "Specialized training"
+
+#: apps/registry/templates/registry/detail/_partials/trainings.html:28
+msgid "Підвищення професійного рівня"
+msgstr "Increasing the professional level"
+
+#: apps/registry/templates/registry/list/_partials/mediators.html:9
+msgid "Знайдено медіаторів"
+msgstr "Mediators found"
 
 #: apps/registry/templates/registry/list/_partials/pagination.html:8
 msgid "Перша"
@@ -132,11 +289,6 @@ msgstr "Register of IP mediators"
 #: apps/registry/templates/registry/list/index.html:4
 msgid "Список осіб"
 msgstr "List of persons"
-
-#: apps/resources/templates/resources/detail/_partials/title.html:16
-#: templates/_partials/header.html:138
-msgid "Реєстр медіаторів"
-msgstr "Register of IP mediators"
 
 #: apps/resources/templates/resources/detail/_partials/title.html:19
 #: apps/resources/templates/resources/list/_partials/title.html:11
@@ -172,18 +324,16 @@ msgstr ""
 msgid "email address"
 msgstr ""
 
-#: core/settings.py:130
+#: core/settings.py:131
 msgid "Українська"
 msgstr ""
 
-#: core/settings.py:131
+#: core/settings.py:132
 msgid "Англійська"
 msgstr ""
 
-#: templates/_partials/footer.html:17
-#, fuzzy
-#| msgid "Реєстр ІР медіаторів"
-msgid "Реєстр ІР-медіаторів"
+#: templates/_partials/footer.html:17 templates/_partials/footer.html:91
+msgid "Реєстр ІР медіаторів"
 msgstr "Register of IP mediators"
 
 #: templates/_partials/footer.html:20
@@ -205,10 +355,6 @@ msgstr "MENU"
 #: templates/_partials/footer.html:87 templates/_partials/header.html:132
 msgid "Про Центр"
 msgstr "About the Center"
-
-#: templates/_partials/footer.html:91
-msgid "Реєстр ІР медіаторів"
-msgstr "Register of IP mediators"
 
 #: templates/_partials/footer.html:95 templates/_partials/header.html:150
 msgid "Ресурси"
@@ -238,3 +384,8 @@ msgstr ""
 #: templates/reversion/revision_form.html:21
 msgid "Press the save button below to revert to this version of the object."
 msgstr ""
+
+#, fuzzy
+#~| msgid "Реєстр ІР медіаторів"
+#~ msgid "Реєстр ІР-медіаторів"
+#~ msgstr "Register of IP mediators"

@@ -1,29 +1,31 @@
+{% load i18n %}
+
 <div class="border p-3">
     <dl class="row mb-0">
         <dt class="col-sm-4 mb-0 mb-sm-2">
             {% if item.type_code == 'BASIC' %}
-                Суб'єкт освітньої діяльності, що здійснив підготовку
+                {% trans "Суб'єкт освітньої діяльності, що здійснив підготовку" %}
             {% else %}
-                Організація, що здійснила підготовку
+                {% trans "Організація, що здійснила підготовку" %}
             {% endif %}
         </dt>
         <dd class="col-sm-8">{{ item.institution_title }}</dd>
 
-        <dt class="col-sm-4">Назва курсу</dt>
+        <dt class="col-sm-4">{% trans "Назва курсу" %}</dt>
         <dd class="col-sm-8">{{ item.education_course_title }}</dd>
 
         {% if item.hours %}
-            <dt class="col-sm-4">Кількість годин</dt>
+            <dt class="col-sm-4">{% trans "Кількість годин" %}</dt>
             <dd class="col-sm-8">{{ item.hours }}</dd>
         {% endif %}
 
         {% if item.year %}
-            <dt class="col-sm-4">Рік навчання</dt>
+            <dt class="col-sm-4">{% trans "Рік навчання" %}</dt>
             <dd class="col-sm-8">{{ item.year }}</dd>
         {% endif %}
 
         {% if item.certificate_url %}
-            <dt class="col-sm-4">Скан-копія свідоцтва:</dt>
+            <dt class="col-sm-4">{% trans "Скан-копія свідоцтва" %}:</dt>
             <dd class="col-sm-8 mb-0">
                 {% if item.certificate_url.lower|slice:"-3:" == "pdf" %}
                     <a href="{{ item.certificate_url }}" target="_blank">

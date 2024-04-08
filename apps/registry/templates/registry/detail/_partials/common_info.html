@@ -1,38 +1,39 @@
+{% load i18n %}
 {% load custom_tags %}
 
-<h4 class="text-center mt-4 mt-lg-0">Загальна інформація</h4>
+<h4 class="text-center mt-4 mt-lg-0">{% trans "Загальна інформація" %}</h4>
 
 <hr>
 
 <dl class="row">
     {% if request.user.is_staff and object.specializations.count > 0 %}
-        <dt class="col-sm-4">Спеціалізація</dt>
+        <dt class="col-sm-4">{% trans "Спеціалізація" %}</dt>
         <dd class="col-sm-8">
             {{ object.specializations_titles|lowfirst_list|join:'; '|capfirst }}
         </dd>
     {% endif %}
 
     {% if object.specialities.count > 0 %}
-        <dt class="col-sm-4">Спеціальність</dt>
+        <dt class="col-sm-4">{% trans "Спеціальність" %}</dt>
         <dd class="col-sm-8">
             {{ object.specialities_titles|lowfirst_list|join:'; '|capfirst }}
         </dd>
     {% endif %}
 
     {% if object.educations.count > 0 %}
-        <dt class="col-sm-4">Освіта</dt>
+        <dt class="col-sm-4">{% trans "Освіта" %}</dt>
         <dd class="col-sm-8">
             {{ object.educations_titles|join:';<br>' }}
         </dd>
     {% endif %}
 
     {% if object.professional_directions.count > 0 %}
-        <dt class="col-sm-4">Спеціалізація у сфері інтелектуальної власності, сферах бізнесу</dt>
+        <dt class="col-sm-4">{% trans "Спеціалізація у сфері інтелектуальної власності, сферах бізнесу" %}</dt>
         <dd class="col-sm-8">{{ object.professional_directions_titles|join:';<br>' }}</dd>
     {% endif %}
 
     {% if object.work_format or object.regions.count > 0 %}
-        <dt class="col-sm-4">Формат роботи, регіон</dt>
+        <dt class="col-sm-4">{% trans "Формат роботи, регіон" %}</dt>
         <dd class="col-sm-8">
             {% if object.work_format %}
                 {{ object.work_format.title }}, {{ object.regions_titles|join:', ' }}
@@ -43,7 +44,7 @@
     {% endif %}
 
     {% if object.languages.count > 0 %}
-        <dt class="col-sm-4">Мова(и) проведення медіації</dt>
+        <dt class="col-sm-4">{% trans "Мова(и) проведення медіації" %}</dt>
         <dd class="col-sm-8">{{ object.languages_titles|lowfirst_list|join:'; '|capfirst }}</dd>
     {% endif %}
 </dl>
