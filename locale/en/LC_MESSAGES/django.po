@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-08 13:29+0300\n"
+"POT-Creation-Date: 2024-04-08 14:59+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -367,6 +367,14 @@ msgstr "Feedback"
 #: templates/_partials/header.html:169
 msgid "Зворотний зв’язок"
 msgstr "Feedback"
+
+#: templates/_partials/header.html:207
+msgid "Адмін-панель"
+msgstr "Admin panel"
+
+#: templates/_partials/header.html:212
+msgid "Вихід"
+msgstr "Exit"
 
 #: templates/reversion/revision_form.html:7
 msgid "Home"
