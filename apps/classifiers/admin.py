@@ -1,25 +1,27 @@
 from django.contrib import admin
 
+from modeltranslation.admin import TranslationAdmin
+
 from .models import (EducationalInstitution, EducationalCourse, Language, Region, Speciality, WorkFormat,
                      Specialization, ProfessionalDirections)
 
 
 @admin.register(EducationalInstitution)
-class EducationalInstitutionTypeAdmin(admin.ModelAdmin):
+class EducationalInstitutionTypeAdmin(TranslationAdmin):
     ordering = ('pk',)
     list_display = ('title', 'created_at', 'updated_at')
     search_fields = ('title',)
 
 
 @admin.register(EducationalCourse)
-class EducationalCourseTypeAdmin(admin.ModelAdmin):
+class EducationalCourseTypeAdmin(TranslationAdmin):
     ordering = ('pk',)
     list_display = ('title', 'created_at', 'updated_at')
     search_fields = ('title',)
 
 
 @admin.register(Language)
-class LanguageTypeAdmin(admin.ModelAdmin):
+class LanguageTypeAdmin(TranslationAdmin):
     ordering = ('pk',)
     list_display = ('title', 'weight', 'created_at', 'updated_at')
     list_editable = ('weight',)
@@ -27,7 +29,7 @@ class LanguageTypeAdmin(admin.ModelAdmin):
 
 
 @admin.register(Region)
-class RegionAdmin(admin.ModelAdmin):
+class RegionAdmin(TranslationAdmin):
     ordering = ('pk',)
     list_display = ('title', 'weight', 'created_at', 'updated_at')
     list_editable = ('weight',)
@@ -35,7 +37,7 @@ class RegionAdmin(admin.ModelAdmin):
 
 
 @admin.register(Speciality)
-class SpecialityAdmin(admin.ModelAdmin):
+class SpecialityAdmin(TranslationAdmin):
     ordering = ('pk',)
     list_display = ('title', 'weight', 'created_at', 'updated_at')
     list_editable = ('weight',)
@@ -51,7 +53,7 @@ class SpecializationAdmin(admin.ModelAdmin):
 
 
 @admin.register(WorkFormat)
-class WorkFormatAdmin(admin.ModelAdmin):
+class WorkFormatAdmin(TranslationAdmin):
     ordering = ('pk',)
     list_display = ('title', 'weight', 'created_at', 'updated_at')
     list_editable = ('weight',)
@@ -59,7 +61,7 @@ class WorkFormatAdmin(admin.ModelAdmin):
 
 
 @admin.register(ProfessionalDirections)
-class ProfessionalDirectionsAdmin(admin.ModelAdmin):
+class ProfessionalDirectionsAdmin(TranslationAdmin):
     ordering = ('pk',)
     list_display = ('title', 'weight', 'created_at', 'updated_at')
     list_editable = ('weight',)

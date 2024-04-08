@@ -11,7 +11,7 @@ class EducationalInstitution(TimeStampModel):
 
     class Meta:
         verbose_name = 'Освітній заклад'
-        verbose_name_plural = 'Освітній заклад'
+        verbose_name_plural = 'Освітні заклади'
         db_table = 'cl_educational_institutions'
         ordering = ('title',)
 
