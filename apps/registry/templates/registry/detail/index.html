@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block page_title %}{{ object.last_name }} {{ object.first_name }} {{ object.middle_name }}{% endblock %}
+{% block page_title %}{{ object.last_name }} {{ object.first_name }} {{ object.middle_name|default_if_none:"" }}{% endblock %}
 
 {% block body %}
     {% include 'registry/detail/_partials/title.html' %}

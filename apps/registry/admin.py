@@ -27,7 +27,7 @@ class TrainingInline(admin.StackedInline):
 
 
 @admin.register(Mediator)
-class MediatorAdmin(VersionAdmin):
+class MediatorAdmin(VersionAdmin, TranslationAdmin):
     form = MediatorModelForm
     save_on_top = True
     ordering = ('pk',)
@@ -87,9 +87,12 @@ class MediatorAdmin(VersionAdmin):
             "updated_at",
             "application_number",
             "application_date",
-            "last_name",
-            "first_name",
-            "middle_name",
+            "last_name_uk",
+            "first_name_uk",
+            "middle_name_uk",
+            "last_name_en",
+            "first_name_en",
+            "middle_name_en",
             "photo",
             "languages",
             "specialities",
@@ -97,7 +100,8 @@ class MediatorAdmin(VersionAdmin):
             "work_format",
             "regions",
             "professional_directions",
-            "additional_info",
+            "additional_info_uk",
+            "additional_info_en",
             "active",
         ]
         current_url = resolve(request.path_info).url_name
