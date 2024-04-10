@@ -1,4 +1,4 @@
-from django.db.models import QuerySet, Value
+from django.db.models import QuerySet, Value, Q, CharField
 from django.db.models.functions import Concat
 from .models import Mediator
 
@@ -17,8 +17,16 @@ def get_mediators_qs(only_active: bool = True, filters: dict = None) -> QuerySet
     if filters:
         if filters.get('mediator_name'):
             res = res.annotate(
-                search_name=Concat('last_name', Value(' '), 'first_name', Value(' '), 'middle_name')
-            ).filter(search_name__icontains=filters['mediator_name'])
+                search_name_uk=Concat(
+                    'last_name_uk', Value(' '), 'first_name_uk', Value(' '), 'middle_name_uk', output_field=CharField(),
+                ),
+                search_name_en=Concat(
+                    'last_name_en', Value(' '), 'first_name_en', Value(' '), 'middle_name_en', output_field=CharField(),
+                ),
+            ).filter(
+                Q(search_name_uk__icontains=filters['mediator_name']) |
+                Q(search_name_en__icontains=filters['mediator_name'])
+            )
 
         if filters.get('region'):
             regions = [filters['region']]
