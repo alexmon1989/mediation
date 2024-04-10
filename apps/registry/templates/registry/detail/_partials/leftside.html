@@ -1,6 +1,7 @@
 {% load thumbnail %}
 {% load i18n %}
 {% load custom_tags %}
+{% load registry_extras %}
 
 <div class="border shadow p-2">
     {% if mediator.photo %}
@@ -10,20 +11,20 @@
                      src="{{ im.url }}"
                      width="{{ im.width }}"
                      height="{{ im.height }}"
-                     alt="{{ object.last_name }} {{ object.first_name }} {{ object.middle_name|default_if_none:"" }}"/>
+                     alt="{% mediator_name mediator=object %}"/>
             </a>
         {% endthumbnail %}
     {% else %}
         <img class="img-fluid"
              src="https://placehold.co/600x900?text=No+Image"
-             alt="{{ object.last_name }} {{ object.first_name }} {{ object.middle_name|default_if_none:"" }}"/>
+             alt="No image"/>
     {% endif %}
 
     <div class="d-flex flex-column align-items-center justify-content-center mt-3">
-        <h4 class="text-center ">{{ object.last_name }} {{ object.first_name }} {{ object.middle_name|default_if_none:"" }}</h4>
+        <h4 class="text-center ">{% mediator_name mediator=object %}</h4>
 
         {% if request.user.is_staff %}
-            <div class="text-indigo-800 mt-2">
+            <div class="text-indigo-800 mt-2 text-center">
                 {% trans "Заява" %} №{{ object.application_number }} {% trans "від" %} {{ object.application_date|date:"SHORT_DATE_FORMAT" }}
             </div>
             {% if object.active %}

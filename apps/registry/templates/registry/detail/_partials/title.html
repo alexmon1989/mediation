@@ -1,5 +1,6 @@
 {% load static %}
 {% load i18n %}
+{% load registry_extras %}
 
 <div class="section jarallax vh-25 text-center-xs overlay-dark overlay-opacity-2 text-white d-flex align-items-center justify-content-center">
 
@@ -7,9 +8,7 @@
     <img class="jarallax-img" src="{% static 'images/IP_Office_background.jpg' %}" alt="">
 
     <div class="container">
-        <h1 class="fw-bold">
-            {{ object.last_name }} {{ object.first_name }} {{ object.middle_name }}
-        </h1>
+        <h1 class="fw-bold">{% mediator_name mediator=object %}</h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb small">
                 <li class="breadcrumb-item">

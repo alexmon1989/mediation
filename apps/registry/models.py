@@ -36,7 +36,7 @@ class Mediator(TimeStampModel):
     application_date = models.DateField("Дата заяви")
     last_name = models.CharField("Прізвище", max_length=255)
     first_name = models.CharField("Ім'я", max_length=255)
-    middle_name = models.CharField("По-батькові", max_length=255, blank=True, null=True)
+    middle_name = models.CharField("По-батькові", max_length=255, blank=True)
     photo = models.ImageField(
         'Фото',
         upload_to='mediators/%Y/%m/%d',
