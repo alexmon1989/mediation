@@ -227,7 +227,7 @@ msgstr "The organization that carried out the training"
 
 #: apps/registry/templates/registry/detail/_partials/training.html:14
 msgid "Назва курсу"
-msgstr "Name of the course"
+msgstr "Course name"
 
 #: apps/registry/templates/registry/detail/_partials/training.html:18
 msgid "Кількість годин"
@@ -255,7 +255,7 @@ msgstr "Specialized training"
 
 #: apps/registry/templates/registry/detail/_partials/trainings.html:28
 msgid "Підвищення професійного рівня"
-msgstr "Increasing the professional level"
+msgstr "Professional development"
 
 #: apps/registry/templates/registry/list/_partials/mediators.html:9
 msgid "Знайдено медіаторів"
