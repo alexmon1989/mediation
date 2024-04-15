@@ -207,7 +207,7 @@
                                 <span class="ms-1">{% trans "Адмін-панель" %}</span>
                             </a>
                             <div class="dropdown-divider mt-3"></div>
-                            <a href="{% url 'logout' %}" title="Log Out" class="dropdown-item mt-1 px-3">
+                            <a href="{% url 'logout' %}?next={{request.path}}" title="Log Out" class="dropdown-item mt-1 px-3">
                                 <i class="fi fi-power float-start"></i>
                                 {% trans "Вихід" %}
                             </a>
