@@ -26,6 +26,18 @@ class TrainingInline(admin.StackedInline):
     )
 
 
+class ProfessionalDirectionsInline(admin.TabularInline):
+    model = Mediator.professional_directions.through
+    extra = 1
+    verbose_name_plural = 'Професійні напрямки'
+    autocomplete_fields = (
+        'professional_direction',
+    )
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).order_by('-weight')
+
+
 @admin.register(Mediator)
 class MediatorAdmin(VersionAdmin, TranslationAdmin):
     form = MediatorModelForm
@@ -48,6 +60,7 @@ class MediatorAdmin(VersionAdmin, TranslationAdmin):
         'active',
     )
     inlines = [
+        ProfessionalDirectionsInline,
         EducationInline,
         TrainingInline,
     ]
@@ -56,7 +69,6 @@ class MediatorAdmin(VersionAdmin, TranslationAdmin):
         'specializations',
         'languages',
         'regions',
-        'professional_directions',
     )
     fieldsets = [
         (
@@ -99,7 +111,6 @@ class MediatorAdmin(VersionAdmin, TranslationAdmin):
             "specializations",
             "work_format",
             "regions",
-            "professional_directions",
             "additional_info_uk",
             "additional_info_en",
             "active",

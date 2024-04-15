@@ -53,8 +53,11 @@ class Mediator(TimeStampModel):
     trainings = models.ManyToManyField(EducationalCourse, through='MediatorTraining', blank=True,
                                        related_name='basic_training')
     specializations = models.ManyToManyField(Specialization, blank=True, verbose_name='Спеціалізація')
-    professional_directions = models.ManyToManyField(ProfessionalDirections, blank=True,
-                                                     verbose_name='Спеціалізація медіатора у сфері інтелектуальної власності, сферах бізнесу')
+    professional_directions = models.ManyToManyField(ProfessionalDirections,
+                                                     blank=True,
+                                                     through='MediatorProfessionalDirections',
+                                                     verbose_name='Спеціалізація медіатора '
+                                                                  'у сфері інтелектуальної власності, сферах бізнесу')
 
     # Контактна інформація
     address = models.TextField('Адреса для листування', max_length=512, null=True, blank=True)
@@ -91,7 +94,8 @@ class Mediator(TimeStampModel):
     @property
     def professional_directions_titles(self) -> List[str]:
         """Повертає список із професійними напрямкками медіатора."""
-        return self.professional_directions.values_list('title', flat=True)
+        res = self.mediatorprofessionaldirections_set.order_by('-weight').select_related('professional_direction')
+        return [item.professional_direction.title for item in res]
 
     @property
     def regions_titles(self) -> List[str]:
@@ -163,6 +167,25 @@ class Mediator(TimeStampModel):
         verbose_name = 'Медіатор'
         verbose_name_plural = 'Медіатори'
         db_table = 'mediators'
+
+
+class MediatorProfessionalDirections(TimeStampModel):
+    """Модель професійних напрямків медіатора."""
+    mediator = models.ForeignKey(Mediator, on_delete=models.CASCADE)
+    professional_direction = models.ForeignKey(ProfessionalDirections,
+                                               on_delete=models.CASCADE,
+                                               verbose_name='Професійний напрямок')
+    weight = models.PositiveIntegerField(default=0,
+                                         verbose_name='Вага',
+                                         help_text='Чим більша вага, тим далі елемент буде у списку значень поля')
+
+    class Meta:
+        verbose_name = 'Професійний напрямок медіатора'
+        verbose_name_plural = 'Професійні напрямки медіатора'
+        db_table = 'mediators_professional_directions'
+
+    def __str__(self):
+        return self.professional_direction.title
 
 
 class MediatorEducation(TimeStampModel):
