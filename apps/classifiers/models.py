@@ -127,7 +127,7 @@ class Specialization(TimeStampModel):
 
 class ProfessionalDirections(TimeStampModel):
     """Модель професійного напрямку медіатора."""
-    title = models.CharField('Назва', max_length=255)
+    title = models.CharField('Назва', max_length=2048)
     weight = models.PositiveSmallIntegerField(
         'Вага',
         default=0,
