@@ -36,7 +36,7 @@
         <dt class="col-sm-4">{% trans "Формат роботи, регіон" %}</dt>
         <dd class="col-sm-8">
             {% if object.work_format %}
-                {{ object.work_format.title }}, {{ object.regions_titles|join:', ' }}
+                {{ object.work_format.title }}{% if object.regions_titles %}, {{ object.regions_titles|join:', ' }}{% endif %}
             {% else %}
                 {{ object.regions_titles|join:', ' }}
             {% endif %}
