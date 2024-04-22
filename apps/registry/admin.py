@@ -5,13 +5,13 @@ from django.urls import resolve
 
 from reversion.admin import VersionAdmin
 from singlemodeladmin import SingleModelAdmin
-from modeltranslation.admin import TranslationAdmin
+from modeltranslation.admin import TranslationAdmin, TranslationStackedInline
 
 from .models import Mediator, Page
 from .forms import MediatorModelForm
 
 
-class EducationInline(admin.StackedInline):
+class EducationInline(TranslationStackedInline):
     model = Mediator.educations.through
     extra = 1
 
