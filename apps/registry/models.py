@@ -115,6 +115,7 @@ class Mediator(TimeStampModel):
         for item in educations:
             years = []
             years_str = ''
+            qualification = ''
             if item.year_from:
                 years.append(str(item.year_from))
             if item.year_to:
@@ -122,7 +123,9 @@ class Mediator(TimeStampModel):
             if years:
                 years_str = ' - '.join(years)
                 years_str = f" ({years_str})"
-            res.append(f"{item.education_institution.title}{years_str}")
+            if item.qualification:
+                qualification = f" ({item.qualification})"
+            res.append(f"{item.education_institution.title}{years_str}{qualification}")
         return res
 
     @cached_property
@@ -195,6 +198,7 @@ class MediatorEducation(TimeStampModel):
                                               verbose_name='Освітній заклад')
     year_from = models.PositiveIntegerField('Рік з', null=True, blank=True)
     year_to = models.PositiveIntegerField('Рік по', null=True, blank=True)
+    qualification = models.CharField('Кваліфікація', blank=True, default='')
     certificate = models.FileField(
         'Файл сертифікату',
         upload_to='certificates/%Y/%m/%d/',
