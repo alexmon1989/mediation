@@ -13,3 +13,19 @@
 .additional-info p {
     margin-bottom: 0;
 }
+
+@media (max-width: 768px) {
+    .pagination-lg {
+        --bs-pagination-padding-x: 0.5rem;
+        --bs-pagination-padding-y: 0.25rem;
+        --bs-pagination-font-size: 0.7rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .pagination-lg {
+        --bs-pagination-padding-x: 1rem;
+        --bs-pagination-padding-y: 0.5rem;
+        --bs-pagination-font-size: 1rem;
+    }
+}
