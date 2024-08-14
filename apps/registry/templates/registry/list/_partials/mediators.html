@@ -4,9 +4,9 @@
 <div class="section bg-theme-color-light py-5">
     <div class="container">
         <div class="row">
-            {% if request.GET %}
+            {% if request.GET.mediator_name or request.GET.region or request.GET.work_format %}
                 <div class="col-12 mb-2">
-                    <p>{% trans "Знайдено медіаторів" %}: <strong>{{ object_list.count }}</strong></p>
+                    <p>{% trans "Знайдено медіаторів" %}: <strong>{{ total_mediators_count }}</strong></p>
                 </div>
             {% endif %}
 

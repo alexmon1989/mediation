@@ -9,7 +9,7 @@ from . import services
 class MediatorListView(ListView):
     """Відображає сторінку зі списком медіаторів."""
     model = Mediator
-    paginate_by = 9
+    paginate_by = 12
     template_name = 'registry/list/index.html'
 
     def get_queryset(self):
@@ -24,6 +24,7 @@ class MediatorListView(ListView):
         context['page'] = Page.objects.first()
         context['total_mediators_count'] = services.get_mediators_qs(
             not self.request.user.is_staff,
+            self.request.GET,
         ).count()
         return context
 
