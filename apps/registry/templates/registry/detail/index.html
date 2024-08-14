@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% load registry_extras %}
 
-{% block page_title %}{{ object.last_name }} {{ object.first_name }} {{ object.middle_name|default_if_none:"" }}{% endblock %}
+{% block page_title %}{% mediator_name mediator=mediator %}{% endblock %}
 
 {% block body %}
     {% include 'registry/detail/_partials/title.html' %}
